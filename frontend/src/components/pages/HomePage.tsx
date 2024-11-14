@@ -1,11 +1,14 @@
-import { Category, Header, Hero } from "../constant";
+import { Category, Footer, Header, Hero } from "../constant";
 
 export const HomePage = () => {
   return (
     <>
       <Header />
-      <Hero />
-      <Category />
+      <div className="flex flex-col gap-[122px]">
+        <Hero />
+        <Category />
+      </div>
+      <Footer />
     </>
   );
 };
