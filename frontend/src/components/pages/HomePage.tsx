@@ -1,7 +1,11 @@
+import { Category, Header, Hero } from "../constant";
+
 export const HomePage = () => {
   return (
-    <div>
-      <div></div>
-    </div>
+    <>
+      <Header />
+      <Hero />
+      <Category />
+    </>
   );
 };
