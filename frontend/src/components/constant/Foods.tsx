@@ -24,15 +24,38 @@ export const Foods = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className="flex justify-between items-center">
             <Card
-              img="https://s3-alpha-sig.figma.com/img/1f91/a1b6/d973c90c192043aefe86e4258acae7e6?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Xvt0I8eowofkE2jp9l38CqSn4yRHnQ8fPrlNzhCssjGBHft-CaWfaG7GtbwM~~ESNJjRh9nsuA9~38b5k0dxsBQQZnXkgKyByha~u2aNC0ju9oaFQb-z3KIXPdAdsnA-g1AbVoZeu1sqMqdxa6ln4GZJDsLT41w~KHC56xApoyZN5bz6BIsiM3pCJ5xNuGE5gqnFfDjerrtOxu1p5sIQrgToLSr1epEjITR5P7g~-61M84IRNSmYIVfKpLrDf6iwDjebTGiuPWcMQw-tRtj0TGTMR7xKcwjUpfxK-ftb5mqvs1NssSmXmePA9E2-KBviYuTiLtcJl~9Mw5EAm5tChA__"
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
               title="Main Pizza"
-              price={14000}
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
             />
           </div>
         </div>
-        {/* <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6">
           <div className="py-4 flex justify-between">
             <div className="flex items-center gap-1">
               <div className="w-8 h-8 flex items-center justify-center">
@@ -50,6 +73,36 @@ export const Foods = () => {
                 <GreenArrow />
               </div>
             </div>
+          </div>
+          <div className="flex justify-between items-center">
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
           </div>
         </div>
         <div className="flex flex-col gap-6">
@@ -71,6 +124,36 @@ export const Foods = () => {
               </div>
             </div>
           </div>
+          <div className="flex justify-between items-center">
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+          </div>
         </div>
         <div className="flex flex-col gap-6">
           <div className="py-4 flex justify-between">
@@ -91,7 +174,37 @@ export const Foods = () => {
               </div>
             </div>
           </div>
-        </div> */}
+          <div className="flex justify-between items-center">
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+            <Card
+              img="https://s3-alpha-sig.figma.com/img/669a/97ce/f4ad7e823b2a1cb020f7b7e74bce1ed7?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARxhydSnIjBZxQCYVQENT-fLqRHLKSNr9-1yck-TY0vaqUgaNiQuZvSywJQ-NM14mblLuAM4UrXs0f-89IK8L7NwJn-Li4LfraX9j7nqo8-QxENdleU2OSC29GgsRGiVcxSKeD-YEp7e2m7S5annONIaO4nMJJM19nGNYCcForNESnoMN150-RiczShqBhOZdS~4MqFNmM6HGBoNU8ncl20IbELbYbuOJG5wqtpgOXABEylYelfdE8SJJhZYCB63jsJl04GNREovA4QlpiKAIyJ6sJD6ksIK7FNWITTZ4EBM906qEZc-Yuk1N3na6SwYRWQkt~R9i6H3S4W309o0EA__"
+              title="Main Pizza"
+              price={14800}
+              discount={16800}
+              saletag={20}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
