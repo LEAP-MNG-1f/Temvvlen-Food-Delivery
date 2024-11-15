@@ -17,7 +17,7 @@ export const Header = () => {
               НҮҮР
             </Link>
             <Link
-              href="/"
+              href="/menu"
               className="px-4 py-2 flex items-center text-[#000] text-sm font-bold leading-4 tracking-[-0.2px] font-sans"
             >
               ХООЛНЫ ЦЭС

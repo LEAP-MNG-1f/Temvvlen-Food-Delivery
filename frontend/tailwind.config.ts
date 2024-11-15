@@ -11,6 +11,7 @@ export default {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         comfortaa: ["Comfortaa", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       colors: {
         background: "var(--background)",

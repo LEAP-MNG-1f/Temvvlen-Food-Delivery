@@ -9,3 +9,5 @@ export * from "./PineconeWhite";
 export * from "./Facebook";
 export * from "./Instagram";
 export * from "./Twitter";
+export * from "./GreenStar";
+export * from "./GreenArrow";

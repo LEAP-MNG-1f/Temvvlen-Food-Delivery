@@ -10,9 +10,9 @@ import {
 export const Footer = () => {
   return (
     <div className="w-full h-[545px] bg-[#18BA51] pt-[114px] pb-[109px] flex justify-center relative mt-[82px]">
-      <div className="absolute bottom-0">
+      {/* <div className="absolute bottom-0">
         <Background />
-      </div>
+      </div> */}
       <div className="max-w-[1200px] w-full flex flex-col gap-10 z-[1]">
         <div className="flex items-center justify-center gap-2">
           <div className="w-[41px] h-[41px] flex items-center justify-center">
