@@ -4,7 +4,7 @@ export const HomePage = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col gap-[122px]">
+      <div className="flex flex-col gap-[122px] z-[1]">
         <Hero />
         <Category />
       </div>

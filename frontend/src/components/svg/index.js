@@ -5,3 +5,7 @@ export * from "./Background";
 export * from "./Book";
 export * from "./Clock";
 export * from "./Food";
+export * from "./PineconeWhite";
+export * from "./Facebook";
+export * from "./Instagram";
+export * from "./Twitter";
