@@ -34,7 +34,7 @@ export default function ShopDrawer() {
           <div className="w-12 h-12"></div>
         </div>
       </div>
-      <div className="w-[586px] h-[172px] shadow-[0px_-4px_8px_0px_rgba(187,190,205,0.20)] px-8 pt-[10px] pb-[30px] flex items-center gap-[10px] fixed bottom-0 z-10">
+      <div className="w-[586px] h-[172px] shadow-[0px_-4px_8px_0px_rgba(187,190,205,0.20)] px-8 py-[10px] flex items-center gap-[10px] fixed bottom-0 z-10">
         <div className="w-full flex flex-col">
           <p className="text-[#5E6166] font-poppins text-lg font-normal leading-[27px]">
             Нийт төлөх дүн
