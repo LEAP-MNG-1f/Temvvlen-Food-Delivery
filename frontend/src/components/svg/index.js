@@ -15,3 +15,4 @@ export * from "./ThreeDot";
 export * from "./BlackThreeDot";
 export * from "./Plus";
 export * from "./LeftArrow";
+export * from "./BlueCircle";
