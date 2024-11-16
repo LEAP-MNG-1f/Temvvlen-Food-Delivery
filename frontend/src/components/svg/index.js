@@ -11,3 +11,7 @@ export * from "./Instagram";
 export * from "./Twitter";
 export * from "./GreenStar";
 export * from "./GreenArrow";
+export * from "./ThreeDot";
+export * from "./BlackThreeDot";
+export * from "./Plus";
+export * from "./LeftArrow";

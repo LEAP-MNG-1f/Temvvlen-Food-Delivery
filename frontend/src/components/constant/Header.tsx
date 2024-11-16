@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PineCone, Profile, Shop } from "../svg";
+import ShopDrawer from "../ui/Drawer";
 
 export const Header = () => {
   return (
@@ -31,12 +32,8 @@ export const Header = () => {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-2 px-4 py-2">
-            <Shop />
-            <p className="text-sm font-bold tracking-[-0.3px] font-sans text-[#000]">
-              Сагс
-            </p>
-          </Link>
+          <ShopDrawer />
+
           <Link href="/" className="flex items-center gap-2 px-4 py-2">
             <Profile />
             <p className="text-sm font-bold tracking-[-0.3px] font-sans text-[#000]">
