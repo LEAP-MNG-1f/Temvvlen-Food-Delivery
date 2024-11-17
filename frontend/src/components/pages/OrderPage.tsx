@@ -3,6 +3,8 @@ import { BlueCircle } from "../svg";
 import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { SelectDistrict } from "../ui/SelectDistrict";
+import { SelectKhoroo } from "../ui/SelectKhoroo";
+import { SelectApartment } from "../ui/SelectApartment";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -27,12 +29,14 @@ export const OrderPage = () => {
                 </p>
               </div>
             </div>
-            <div className="p-6 flex flex-col gap-10 rounded-2xl shadow-[0px_0px_20px_0px_rgba(0,0,0,0.05)]">
+            <div className="h-[615px] p-6 flex flex-col gap-10 rounded-2xl shadow-[0px_0px_20px_0px_rgba(0,0,0,0.05)]">
               <div className="flex flex-col gap-4">
                 <p className="text-black font-sans text-sm font-normal leading-[17px]">
                   Хаяг аа оруулна уу
                 </p>
                 <SelectDistrict />
+                <SelectKhoroo />
+                <SelectApartment />
               </div>
               <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1">
@@ -109,7 +113,7 @@ export const OrderPage = () => {
                 </p>
               </div>
             </div>
-            <div className="p-6 flex flex-col  rounded-2xl shadow-[0px_0px_20px_0px_rgba(0,0,0,0.05)]">
+            <div className="p-6 h-[615px] flex flex-col rounded-2xl shadow-[0px_0px_20px_0px_rgba(0,0,0,0.05)] justify-between">
               <div className="w-full h-[1px] bg-[#D6D8DB]"></div>
               <div className="flex items-center gap-[10px]">
                 <div className="w-full flex flex-col">
