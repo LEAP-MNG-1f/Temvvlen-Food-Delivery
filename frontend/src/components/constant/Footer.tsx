@@ -9,7 +9,7 @@ import {
 
 export const Footer = () => {
   return (
-    <div className="w-full h-[545px] bg-[#18BA51] pt-[114px] pb-[109px] flex justify-center relative mt-[82px]">
+    <div className="w-full h-[545px] bg-[#18BA51] pt-[114px] pb-[109px] flex justify-center relative">
       <div className="absolute bottom-0">
         <Background />
       </div>
@@ -36,13 +36,13 @@ export const Footer = () => {
             Холбоо барих
           </Link>
           <Link
-            href="/"
+            href="/menu"
             className="text-white font-sans text-base font-semibold leading-[19px] underline decoration-solid underline-offset-[3px]"
           >
             Хоолны цэс
           </Link>
           <Link
-            href="/"
+            href="/terms-of-use"
             className="text-white font-sans text-base font-semibold leading-[19px] underline decoration-solid underline-offset-[3px]"
           >
             Үйлчилгээний нөхцөл
@@ -54,7 +54,7 @@ export const Footer = () => {
             Хүргэлтийн бүс
           </Link>
           <Link
-            href="/"
+            href="/privacy"
             className="text-white font-sans text-base font-semibold leading-[19px] underline decoration-solid underline-offset-[3px]"
           >
             Нууцлалын бодлого

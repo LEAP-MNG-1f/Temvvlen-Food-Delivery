@@ -4,7 +4,7 @@ export const HomePage = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col gap-[122px] z-10">
+      <div className="flex flex-col gap-[122px] z-10 mb-[86px]">
         <Hero />
         <Category />
         <Foods />
