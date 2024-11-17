@@ -4,7 +4,7 @@ import ShopDrawer from "../ui/Drawer";
 
 export const Header = () => {
   return (
-    <div className="w-full bg-white flex justify-center">
+    <div className="w-full bg-white flex justify-center z-[1]">
       <div className="max-w-[1258px] w-full px-6 py-2 flex justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="w-10 h-10 flex justify-center items-center">

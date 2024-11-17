@@ -5,7 +5,7 @@ export const AdminPage = () => {
   return (
     <div className="w-full flex flex-col items-center">
       <Header />
-      <div className="max-w-[1200px] w-full flex ">
+      <div className="max-w-[1200px] w-full flex">
         <div className="max-w-[282px] w-full py-[26px] pr-6 flex flex-col gap-10">
           <p className="text-[#272727] font-poppins text-[22px] font-bold leading-[33px]">
             Food menu

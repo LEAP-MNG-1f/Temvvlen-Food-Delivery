@@ -3,7 +3,7 @@ import { GreenArrow, GreenStar } from "../svg";
 
 export const Foods = () => {
   return (
-    <div className="w-full bg-white flex justify-center">
+    <div className="w-full bg-white flex justify-center z-[1]">
       <div className="max-w-[1200px] w-full flex flex-col gap-20">
         <div className="flex flex-col gap-6">
           <div className="py-4 flex justify-between">

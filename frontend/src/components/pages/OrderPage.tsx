@@ -29,7 +29,7 @@ export const OrderPage = () => {
                 </p>
               </div>
             </div>
-            <div className="h-[615px] p-6 flex flex-col gap-10 rounded-2xl shadow-[0px_0px_20px_0px_rgba(0,0,0,0.05)]">
+            <form className="h-[615px] p-6 flex flex-col gap-10 rounded-2xl shadow-[0px_0px_20px_0px_rgba(0,0,0,0.05)]">
               <div className="flex flex-col gap-4">
                 <p className="text-black font-sans text-sm font-normal leading-[17px]">
                   Хаяг аа оруулна уу
@@ -96,7 +96,7 @@ export const OrderPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
           <div className="w-[432px] flex flex-col gap-6">
             <div className="px-6 py-4 flex items-center gap-4">
