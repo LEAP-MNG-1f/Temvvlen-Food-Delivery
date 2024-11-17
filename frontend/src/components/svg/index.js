@@ -18,3 +18,5 @@ export * from "./LeftArrow";
 export * from "./BlueCircle";
 export * from "./Location";
 export * from "./DownArrow";
+export * from "./LocationWhite";
+export * from "./DownArrowWhite";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DownArrow, Location } from "../svg";
+import { DownArrow, DownArrowWhite, Location, LocationWhite } from "../svg";
 import { apartment, khoroo } from "./data";
 
 type Apartment = {
@@ -26,21 +26,20 @@ export const SelectApartment = () => {
         <div
           onClick={toggling}
           tabIndex={0}
-          className="h-12 w-full px-4 py-2 rounded-[4px] border border-[#ECEDF0] bg-[#F7F7F8] flex items-center gap-1"
-          // style={
-          //   { backgroundColor: selectedColor } || {
-          //     backgroundColor: "#F9FAFB",
-          //   }
-          // }
+          className={`h-12 w-full px-4 py-2 rounded-[4px] border border-[#ECEDF0] flex items-center gap-1 
+            ${selectedOption ? "bg-[#18BA51]" : "bg-[#F7F7F8]"}`}
         >
           <div className="w-6 h-6">
-            <Location />
+            {selectedOption ? <LocationWhite /> : <Location />}
           </div>
-          <p className="w-full text-[#8B8E95] font-sans text-base font-normal leading-[19px]">
+          <p
+            className={`w-full font-sans text-base font-normal leading-[19px] 
+                ${selectedOption ? "text-white" : "text-[#8B8E95]"}`}
+          >
             {selectedOption?.apartment || "Байр гудамж сонгоно уу"}
           </p>
           <div className="w-6 h-6">
-            <DownArrow />
+            {selectedOption ? <DownArrowWhite /> : <DownArrow />}
           </div>
         </div>
         {open && (
