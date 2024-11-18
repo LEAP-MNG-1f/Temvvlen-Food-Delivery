@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PineCone, Profile, Shop } from "../svg";
 import ShopDrawer from "../ui/Drawer";
+import { LoginModal } from "../ui/LoginModal";
 
 export const Header = () => {
   return (
@@ -34,12 +35,13 @@ export const Header = () => {
         <div className="flex items-center gap-2">
           <ShopDrawer />
 
-          <Link href="/" className="flex items-center gap-2 px-4 py-2">
+          <Link href="/login" className="flex items-center gap-2 px-4 py-2">
             <Profile />
             <p className="text-sm font-bold tracking-[-0.3px] font-sans text-[#000]">
               Нэвтрэх
             </p>
           </Link>
+          {/* <LoginModal /> */}
         </div>
       </div>
     </div>

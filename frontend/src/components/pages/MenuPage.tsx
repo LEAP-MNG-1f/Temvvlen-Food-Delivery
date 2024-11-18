@@ -1,5 +1,4 @@
 import { Footer, Header } from "../constant";
-import FoodModal from "../ui/Modal";
 
 export const MenuPage = () => {
   return (
@@ -21,7 +20,6 @@ export const MenuPage = () => {
           </button>
         </div>
         <div className="grid-cols-4 grid "></div>
-        <FoodModal />
       </div>
       <Footer />
     </div>

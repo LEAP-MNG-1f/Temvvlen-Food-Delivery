@@ -30,7 +30,7 @@ export const Footer = () => {
             Нүүр
           </Link>
           <Link
-            href="/"
+            href="https://pinecone.mn"
             className="text-white font-sans text-base font-semibold leading-[19px] underline decoration-solid underline-offset-[3px]"
           >
             Холбоо барих
