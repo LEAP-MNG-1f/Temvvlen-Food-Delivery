@@ -5,7 +5,7 @@ export const PrivacyPage = () => {
   return (
     <>
       <Header />
-      <div className="w-full flex justify-center bg-white z-[1] mb-[52px] mt-8">
+      <div className="w-full flex justify-center bg-white z-[1] mb-[60px] mt-8">
         <div className="max-w-[1200px] w-full flex flex-col gap-6">
           <div className="py-4 flex items-center gap-1">
             <div className="w-8 h-8 flex justify-center items-center">

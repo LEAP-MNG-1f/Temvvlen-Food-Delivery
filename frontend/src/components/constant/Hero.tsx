@@ -16,6 +16,13 @@ export const Hero = () => {
             Horem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
         </div>
+        <div className="w-[588px] h-[438px] relative">
+          <img src="image13.png" className="absolute w-[443px] h-[438px]" />
+          <img
+            src="image14.png"
+            className="absolute w-[313px] h-[313px] bottom-[12px] right-0"
+          />
+        </div>
       </div>
     </div>
   );
