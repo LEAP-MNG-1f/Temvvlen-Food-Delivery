@@ -55,14 +55,14 @@ export const Category = () => {
               <Book />
             </div>
           </div>
-          {/* <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1">
             <p className="text-[#272727] font-poppins text-lg font-bold leading-normal">
               Хоолны өргөн сонголт
             </p>
             <p className="text-[#272727] font-sans text-sm font-normal leading-[17px] opacity-75">
               Захиалга бэлтгэлийн явцыг хянах
             </p>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
