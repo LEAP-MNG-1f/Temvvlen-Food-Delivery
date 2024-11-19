@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRef } from "react";
+import { Minus, WhitePlus } from "../svg";
 
 type CardPropsType = {
   img: string;
@@ -77,10 +78,22 @@ export const Card = (props: CardPropsType) => {
             <p className="text-[#000000] font-poppins text-lg font-semibold leading-[27px]">
               Тоо
             </p>
-            <div></div>
-            <button className="bg-[#18BA51] rounded-[4px] px-4 py-2 h-12 w-full text-[#FFFFFF] font-sans text-base font-normal leading-[19px]">
-              Сагслах
-            </button>
+            <div className="flex items-center gap-5">
+              <button className="w-[45px] h-10 bg-[#18BA51] rounded-[10px] flex items-center justify-center">
+                <Minus />
+              </button>
+              <p className="w-full max-w-[254px] px-[30px] py-2 text-[#171717] font-poppins text-base font-medium flex items-center justify-center">
+                1
+              </p>
+              <button className="w-[45px] h-10 bg-[#18BA51] rounded-[10px] flex items-center justify-center">
+                <WhitePlus />
+              </button>
+            </div>
+            <form method="dialog">
+              <button className="bg-[#18BA51] rounded-[4px] px-4 py-2 h-12 w-full text-[#FFFFFF] font-sans text-base font-normal leading-[19px]">
+                Сагслах
+              </button>
+            </form>
           </div>
         </div>
         <form method="dialog" className="modal-backdrop">

@@ -5,7 +5,7 @@ import { LoginModal } from "../ui/LoginModal";
 
 export const Header = () => {
   return (
-    <div className="w-full bg-white flex justify-center z-[1]">
+    <div className="w-full bg-white flex justify-center z-50 fixed">
       <div className="max-w-[1258px] w-full px-6 py-2 flex justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="w-10 h-10 flex justify-center items-center">
@@ -25,7 +25,7 @@ export const Header = () => {
               ХООЛНЫ ЦЭС
             </Link>
             <Link
-              href="/"
+              href="/delivery-zone"
               className="px-4 py-2 flex items-center text-[#000] text-sm font-bold leading-4 tracking-[-0.2px] font-sans"
             >
               ХҮРГЭЛТИЙН БҮС

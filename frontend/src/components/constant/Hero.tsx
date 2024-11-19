@@ -2,7 +2,7 @@ import { Background } from "../svg";
 
 export const Hero = () => {
   return (
-    <div className="w-full h-[788px] bg-[#18BA51] flex justify-center relative">
+    <div className="w-full h-[788px] bg-[#18BA51] flex justify-center relative mt-[56px]">
       <div className="absolute">
         <Background />
       </div>
