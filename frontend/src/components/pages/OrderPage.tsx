@@ -12,8 +12,8 @@ export const OrderPage = () => {
   return (
     <div className="min-h-screen w-full flex flex-col justify-between">
       <div className="w-full flex flex-col items-center gap-12">
-        <Header />
-        <div className="flex gap-[180px] z-[1] mb-20 mt-[56px]">
+        <Header home="" menu="" location="" />
+        <div className="flex gap-[180px] z-[1] mb-20 mt-[105px]">
           <div className="w-[432px] flex flex-col gap-6">
             <div className="px-6 py-4 flex items-center gap-4">
               <BlueCircle />

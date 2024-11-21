@@ -5,7 +5,7 @@ export const TermsofUsePage = () => {
   return (
     <div className="min-h-screen w-full flex flex-col">
       <div className="w-full flex flex-col items-center">
-        <Header />
+        <Header home="" menu="" location="" />
         <div className="w-full flex justify-center bg-white z-[1] mb-[60px] mt-[88px]">
           <div className="max-w-[1200px] w-full flex flex-col gap-6">
             <div className="py-4 flex items-center gap-1">

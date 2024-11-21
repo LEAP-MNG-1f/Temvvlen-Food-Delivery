@@ -5,7 +5,7 @@ export const DeliveryZonePage = () => {
   return (
     <div className="min-h-screen w-full flex flex-col">
       <div className="w-full flex flex-col items-center">
-        <Header />
+        <Header home="" menu="" location="active" />
         <div className="max-w-[1200px] w-full flex flex-col gap-10 z-[1] mt-[117px] mb-[45px]">
           <img
             src="fcc4a2bce9bd256b5eb53b5b527de457.png"

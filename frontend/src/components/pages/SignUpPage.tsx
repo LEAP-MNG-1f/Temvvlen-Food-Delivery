@@ -52,7 +52,7 @@ export const SignUpPage = () => {
   return (
     <div className="min-h-screen w-full flex flex-col">
       <div className="w-full flex flex-col items-center">
-        <Header />
+        <Header home="" menu="" location="" />
         <form className="max-w-[448px] w-full p-8 flex flex-col gap-12 rounded-2xl bg-white mt-[130px] mb-[107px] z-[1]">
           <p className="text-[#0D1118] text-center font-sans text-[28px] font-bold leading-[33px]">
             Бүртгүүлэх

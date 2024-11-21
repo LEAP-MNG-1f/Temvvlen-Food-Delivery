@@ -2,10 +2,12 @@ import dotenv from "dotenv";
 import { v2 as cloudinary } from "cloudinary";
 import express from "express";
 import cors from "cors";
+import connectDb from "./connectDB.js";
+
+dotenv.config();
 
 const app = express();
 const PORT = 8000;
-dotenv.config();
 
 app.use(cors());
 
@@ -40,8 +42,16 @@ cloudinary.config({
   console.log(autoCropUrl);
 })();
 
-app.use("/", (request, response) => {
-  response.send(["Hello", "World"]);
+app.get("/", async (request, response) => {
+  const db = await connectDb();
+
+  let collection = db.collection("movies");
+  let result = await collection.find().limit(10).toArray();
+
+  response.json({
+    success: true,
+    data: result,
+  });
 });
 
 app.listen(PORT, () => {
