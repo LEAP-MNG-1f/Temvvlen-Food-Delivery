@@ -110,25 +110,25 @@ server.delete("/delete-user", async (req, response) => {
   });
 });
 
-// server.put("/update-user", async (req, response) => {
-//   const db = await connectDb();
+server.put("/update-user", async (req, response) => {
+  const db = await connectDb();
 
-//   const collection = db.collection("product");
-//   const result = await collection.findOneAndUpdate(
-//     {
-//       owner: "Temvvlen",
-//     },
-//     {
-//       $set: { price: "20000", date: new Date() },
-//     }
-//   );
+  const collection = db.collection("product");
+  const result = await collection.findOneAndUpdate(
+    {
+      owner: "Temvvlen",
+    },
+    {
+      $set: { price: "20000", date: new Date() },
+    }
+  );
 
-//   response.json({
-//     succes: true,
-//     data: result,
-//   });
-// });
+  response.json({
+    succes: true,
+    data: result,
+  });
+});
 
-// server.listen(PORT, () => {
-//   console.log(`server is running on http://localhost:${PORT}`);
-// });
+server.listen(PORT, () => {
+  console.log(`server is running on http://localhost:${PORT}`);
+});
