@@ -84,19 +84,17 @@ server.get("/", async (req, response) => {
   });
 });
 
-// server.post("/create-user", async (req, response) => {
-//   const db = await connectDb();
+server.post("/create-user", async (req, response) => {
+  const db = await connectDb();
 
-//   const collection = db.collection("product");
-//   const result = await collection.insertMany([
+  const collection = db.collection("product");
+  const result = await collection.insertMany([]);
 
-//   ]);
-
-//   response.json({
-//     succes: true,
-//     data: result,
-//   });
-// });
+  response.json({
+    succes: true,
+    data: result,
+  });
+});
 
 server.delete("/delete-user", async (req, response) => {
   const db = await connectDb();
