@@ -50,7 +50,7 @@ export const SelectApartment = () => {
                   type="button"
                   key={value.apartment}
                   onClick={onOptionClicked(value)}
-                  className="px-4 py-2 h-12 flex gap-1 items-center text-[#373737] font-sans text-base font-normal leading-[19px]"
+                  className="w-full px-4 py-2 h-12 flex gap-1 items-center text-[#373737] font-sans text-base font-normal leading-[19px]"
                 >
                   <Location />
                   {value.apartment}
