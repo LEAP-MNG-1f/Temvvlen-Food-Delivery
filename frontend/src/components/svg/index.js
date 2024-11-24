@@ -22,3 +22,4 @@ export * from "./LocationWhite";
 export * from "./DownArrowWhite";
 export * from "./Minus";
 export * from "./WhitePlus";
+export * from "./Close";
