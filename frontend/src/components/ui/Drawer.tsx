@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import { LeftArrow, Shop } from "../svg";
 import Link from "next/link";
+import { DrawerCard } from "./DrawerCard";
 
 type Anchor = "right";
 
@@ -33,7 +34,10 @@ export default function ShopDrawer() {
           </p>
           <div className="w-12 h-12"></div>
         </div>
-        <div className="w-full h-[1px] bg-[#D6D8DB]"></div>
+        <div className="flex flex-col">
+          <div className="w-full h-[1px] bg-[#D6D8DB]"></div>
+          <DrawerCard />
+        </div>
       </div>
       <div className="w-[586px] h-[172px] shadow-[0px_-4px_8px_0px_rgba(187,190,205,0.20)] px-8 py-[10px] flex items-center gap-[10px] fixed bottom-0 z-10">
         <div className="w-full flex flex-col">
