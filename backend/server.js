@@ -1,15 +1,18 @@
-// import dotenv from "dotenv";
-// import { v2 as cloudinary } from "cloudinary";
-// import express from "express";
-// import cors from "cors";
-// import connectDb from "./connectDB.js";
+import dotenv from "dotenv";
+import { v2 as cloudinary } from "cloudinary";
+import express from "express";
+import cors from "cors";
+import connectDb from "./connectDB.js";
+import bodyParser from "body-parser";
+import { ObjectId } from "mongodb";
 
-// dotenv.config();
+dotenv.config();
 
-// const app = express();
-// const PORT = 8000;
+const app = express();
+const PORT = 8000;
 
-// app.use(cors());
+app.use(cors());
+app.use(bodyParser.json());
 
 // // Configuration
 // cloudinary.config({
@@ -42,41 +45,13 @@
 //   console.log(autoCropUrl);
 // })();
 
-// app.get("/", async (request, response) => {
-//   const db = await connectDb();
+//--------------------Food--------------------//
 
-//   let collection = db.collection("movies");
-//   let result = await collection.find().limit(10).toArray();
-
-//   response.json({
-//     success: true,
-//     data: result,
-//   });
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`http://localhost:${PORT}`);
-// });
-
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import connectDb from "./connectDB.js";
-
-import { ObjectId, Timestamp } from "mongodb";
-
-dotenv.config();
-
-const server = express();
-const PORT = 4000;
-
-server.use(cors());
-
-server.get("/", async (req, response) => {
+app.get("/foods", async (request, response) => {
   const db = await connectDb();
 
-  let collection = db.collection("movies");
-  let results = await collection.find().limit(10).toArray();
+  let collection = db.collection("food");
+  let results = await collection.find().toArray();
 
   response.json({
     succes: true,
@@ -84,42 +59,124 @@ server.get("/", async (req, response) => {
   });
 });
 
-server.post("/create-user", async (req, response) => {
+app.post("/food", async (request, response) => {
   const db = await connectDb();
 
-  const collection = db.collection("product");
-  const result = await collection.insertMany([]);
-
-  response.json({
-    succes: true,
-    data: result,
-  });
-});
-
-server.delete("/delete-user", async (req, response) => {
-  const db = await connectDb();
-
-  const collection = db.collection("product");
-  const result = await collection.deleteOne({
-    owner: "Temvvlen",
-  });
-
-  response.json({
-    succes: true,
-    data: result,
-  });
-});
-
-server.put("/update-user", async (req, response) => {
-  const db = await connectDb();
-
-  const collection = db.collection("product");
-  const result = await collection.findOneAndUpdate(
+  const collection = db.collection("food");
+  const result = await collection.insertMany([
     {
-      owner: "Temvvlen",
+      name: "Main Pizza",
+      image:
+        "https://s3-alpha-sig.figma.com/img/1f91/a1b6/d973c90c192043aefe86e4258acae7e6?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NTok2YnRoKy5C-EmxJjP0UJkF9IKTTWuYbe102ty3DZ0NWYL6S2r1YoLudOdUhkRYde6p7c3N~mXWJTRopUoBAmeNodVByWiQSEl7JmCdH~lt6Lyji9Qx9kAkspPqTFFeBzWSK6tX~EhQTCgRI3fycQ72-wrSJTCmiHbBsMh41N8SI-ix9XSvau9mJdVFpmJZMEWEiubvFF4h-AXlM62PV6wDYZsFDpxo~~FfXAgD~T8~taFLP5HggAfgqx0b3IqOIt7Ta8DPdg2iSQqTiKrWO5HMPf6WIyzvlSBNxnHSnZlf-oTZayJM5u7FmcJnRZ-VFyNji~og-4nT9f-qXQoRA__",
+      ingredient: "Хулуу, төмс, лууван , сонгино, цөцгийн тос, самрын үр",
+      price: 34800,
+    },
+  ]);
+
+  response.json({
+    succes: true,
+    data: result,
+  });
+});
+
+//--------------------Category--------------------//
+
+app.get("/categorys", async (request, response) => {
+  const db = await connectDb();
+
+  let collection = db.collection("category");
+  let results = await collection.find().toArray();
+
+  response.json({
+    succes: true,
+    data: results,
+  });
+});
+
+app.post("/category", async (request, response) => {
+  const db = await connectDb();
+
+  const collection = db.collection("category");
+  const result = await collection.insertMany([
+    {
+      name: "Breakfast",
     },
     {
-      $set: { price: "20000", date: new Date() },
+      name: "Soup",
+    },
+    {
+      name: "Main Course",
+      foodId: new ObjectId("674362c43585615c3aabe015"),
+    },
+    {
+      name: "Dessert",
+    },
+  ]);
+
+  response.json({
+    succes: true,
+    data: result,
+  });
+});
+
+//--------------------Cart--------------------//
+
+app.get("/cart-items", async (request, response) => {
+  const db = await connectDb();
+
+  let collection = db.collection("cart");
+  let results = await collection.find().toArray();
+
+  response.json({
+    succes: true,
+    data: results,
+  });
+});
+
+app.post("/cart-item", async (request, response) => {
+  const db = await connectDb();
+
+  const collection = db.collection("cart");
+  const result = await collection.insertMany([
+    {
+      name: "Main Pizza",
+      image:
+        "https://s3-alpha-sig.figma.com/img/1f91/a1b6/d973c90c192043aefe86e4258acae7e6?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NTok2YnRoKy5C-EmxJjP0UJkF9IKTTWuYbe102ty3DZ0NWYL6S2r1YoLudOdUhkRYde6p7c3N~mXWJTRopUoBAmeNodVByWiQSEl7JmCdH~lt6Lyji9Qx9kAkspPqTFFeBzWSK6tX~EhQTCgRI3fycQ72-wrSJTCmiHbBsMh41N8SI-ix9XSvau9mJdVFpmJZMEWEiubvFF4h-AXlM62PV6wDYZsFDpxo~~FfXAgD~T8~taFLP5HggAfgqx0b3IqOIt7Ta8DPdg2iSQqTiKrWO5HMPf6WIyzvlSBNxnHSnZlf-oTZayJM5u7FmcJnRZ-VFyNji~og-4nT9f-qXQoRA__",
+      ingredient: "Хулуу, төмс, лууван , сонгино, цөцгийн тос, самрын үр",
+      price: 34800,
+    },
+  ]);
+
+  response.json({
+    succes: true,
+    data: result,
+  });
+});
+
+app.delete("/cart-item", async (request, response) => {
+  const db = await connectDb();
+
+  const collection = db.collection("cart");
+  const result = await collection.deleteOne({
+    _id: new ObjectId("673ff14597d4d83c00f19d8a"),
+  });
+
+  response.json({
+    succes: true,
+    data: result,
+  });
+});
+
+app.put("/update-user", async (request, response) => {
+  const db = await connectDb();
+
+  const collection = db.collection("test");
+  const result = await collection.update(
+    {
+      _id: new ObjectId("673ff2ae2930e49fb1bd8d26"),
+    },
+    {
+      $set: { email: "Saskue@gmail.com" },
     }
   );
 
@@ -129,6 +186,33 @@ server.put("/update-user", async (req, response) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`server is running on http://localhost:${PORT}`);
+app.delete("/delete-user", async (request, response) => {
+  const db = await connectDb();
+
+  const collection = db.collection("test");
+  const result = await collection.deleteOne({
+    _id: new ObjectId("673ff14597d4d83c00f19d8a"),
+  });
+
+  response.json({
+    succes: true,
+    data: result,
+  });
 });
+
+app.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}`);
+});
+
+// import express from "express";
+// import cors from "cors";
+// import dotenv from "dotenv";
+// import connectDb from "./connectDB.js";
+// import bodyParser from "body-parser";
+// import { ObjectId } from "mongodb";
+
+// dotenv.config();
+
+// server.listen(PORT, () => {
+//   console.log(`server is running on http://localhost:${PORT}`);
+// });

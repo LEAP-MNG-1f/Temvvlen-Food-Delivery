@@ -1,9 +1,42 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Header } from "../constant";
 import { BlackThreeDot, Plus, ThreeDot } from "../svg";
 import { AddCategory } from "../ui/AddCategory";
 import { AddFood } from "../ui/AddFood";
 
+interface CategoryType {
+  name: string;
+}
+
 export const AdminPage = () => {
+  const [dataCategory, setDataCategory] = useState<CategoryType[]>([]);
+  const [focus, setFocus] = useState("Breakfast");
+
+  const handelClickFocus = (value: string) => {
+    setFocus(value);
+  };
+
+  const fetchDataCategory = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/categorys");
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const category = await response.json();
+      setDataCategory(category.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataCategory();
+  }, []);
+
   return (
     <div className="w-full flex flex-col items-center">
       <Header home="" menu="" location="" />
@@ -13,30 +46,26 @@ export const AdminPage = () => {
             Food menu
           </p>
           <div className="flex flex-col gap-[26px]">
-            <button className="h-10 px-4 py-2 flex justify-between items-center rounded-lg border border-[#D6D8DB] bg-[#18BA51]">
-              <p className="text-white font-inter text-lg font-medium leading-6 tracking-[-0.4px]">
-                Breakfast
-              </p>
-              <ThreeDot />
-            </button>
-            <button className="h-10 px-4 py-2 flex justify-between items-center rounded-lg border border-[#D6D8DB] bg-white">
-              <p className="text-[#000000] font-inter text-lg font-medium leading-6 tracking-[-0.4px]">
-                Soup
-              </p>
-              <BlackThreeDot />
-            </button>
-            <button className="h-10 px-4 py-2 flex justify-between items-center rounded-lg border border-[#D6D8DB] bg-white">
-              <p className="text-[#000000] font-inter text-lg font-medium leading-6 tracking-[-0.4px]">
-                Main course
-              </p>
-              <BlackThreeDot />
-            </button>
-            <button className="h-10 px-4 py-2 flex justify-between items-center rounded-lg border border-[#D6D8DB] bg-white">
-              <p className="text-[#000000] font-inter text-lg font-medium leading-6 tracking-[-0.4px]">
-                Desserts
-              </p>
-              <BlackThreeDot />
-            </button>
+            {dataCategory?.map((category, id) => {
+              return (
+                <button
+                  onClick={() => handelClickFocus(category.name)}
+                  className={`h-10 px-4 py-2 flex justify-between items-center rounded-lg border border-[#D6D8DB] ${
+                    focus === category.name ? "bg-[#18BA51]" : "bg-white"
+                  }`}
+                  key={id}
+                >
+                  <p
+                    className={`font-inter text-lg font-medium leading-6 tracking-[-0.4px] ${
+                      focus === category.name ? "text-white" : "text-[#000000]"
+                    }`}
+                  >
+                    {category.name}
+                  </p>
+                  {focus === category.name ? <ThreeDot /> : <BlackThreeDot />}
+                </button>
+              );
+            })}
             <AddCategory />
           </div>
         </div>

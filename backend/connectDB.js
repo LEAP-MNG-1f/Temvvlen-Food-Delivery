@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
 const connectionString =
-  "mongodb+srv://ace12d192:wap3TZLOZeJlgLIq@cluster0.s6jvj.mongodb.net/";
+  "mongodb+srv://Crown:Crown7209@food-delivery.1d9mm.mongodb.net/";
 
 const connectDb = async () => {
   const client = new MongoClient(connectionString);
@@ -14,7 +14,7 @@ const connectDb = async () => {
     console.log("failed to connect db");
   }
 
-  const db = connection.db("sample_mflix");
+  const db = connection.db("data");
   return db;
 };
 

@@ -1,22 +1,50 @@
 "use client";
 
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import { LeftArrow, Shop } from "../svg";
 import Link from "next/link";
 import { DrawerCard } from "./DrawerCard";
+import { Fragment, useEffect, useState } from "react";
 
 type Anchor = "right";
 
+type CartItem = {
+  id: number;
+  name: string;
+  price: number;
+  ingredient: string;
+  image: string;
+};
+
 export default function ShopDrawer() {
-  const [state, setState] = React.useState({
+  const [dataCart, setDataCart] = useState<CartItem[]>([]);
+  const [state, setState] = useState({
     right: false,
   });
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => () => {
     setState({ ...state, [anchor]: open });
   };
+
+  const fetchDataCart = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/cart-items");
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const category = await response.json();
+      setDataCart(category.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataCart();
+  }, []);
 
   const list = (anchor: Anchor) => (
     <Box
@@ -36,7 +64,13 @@ export default function ShopDrawer() {
         </div>
         <div className="flex flex-col">
           <div className="w-full h-[1px] bg-[#D6D8DB]"></div>
-          <DrawerCard />
+          {dataCart?.map((item, id) => {
+            return (
+              <div key={id}>
+                <DrawerCard item={item} />
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="w-[586px] h-[172px] shadow-[0px_-4px_8px_0px_rgba(187,190,205,0.20)] px-8 py-[10px] flex items-center gap-[10px] fixed bottom-0 z-10">
@@ -62,7 +96,7 @@ export default function ShopDrawer() {
   return (
     <>
       {(["right"] as const).map((anchor) => (
-        <React.Fragment key={anchor}>
+        <Fragment key={anchor}>
           <div
             onClick={toggleDrawer(anchor, true)}
             className="flex items-center gap-2 px-4 py-2 cursor-pointer"
@@ -79,7 +113,7 @@ export default function ShopDrawer() {
           >
             {list(anchor)}
           </Drawer>
-        </React.Fragment>
+        </Fragment>
       ))}
     </>
   );
