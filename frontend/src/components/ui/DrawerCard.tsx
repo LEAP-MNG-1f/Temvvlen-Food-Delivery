@@ -29,9 +29,9 @@ export const DrawerCard = () => {
             <p className="w-[45px] h-10 flex items-center justify-center bg-white text-[#171717] font-poppins text-base font-medium">
               1
             </p>
-            <button className="w-[45px] h-10 flex items-center justify-center rounded-[10px] bg-[#18BA51]">
+            {/* <button className="w-[45px] h-10 flex items-center justify-center rounded-[10px] bg-[#18BA51]">
               <WhitePlus />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
