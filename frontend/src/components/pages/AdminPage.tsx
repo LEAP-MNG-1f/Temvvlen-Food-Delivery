@@ -18,24 +18,24 @@ export const AdminPage = () => {
     setFocus(value);
   };
 
-  const fetchDataCategory = async () => {
-    try {
-      const response = await fetch("http://localhost:8000/categorys");
+  // const fetchDataCategory = async () => {
+  //   try {
+  //     const response = await fetch("http://localhost:8000/categorys");
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! Status: ${response.status}`);
+  //     }
 
-      const category = await response.json();
-      setDataCategory(category.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //     const category = await response.json();
+  //     setDataCategory(category.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchDataCategory();
-  }, []);
+  // useEffect(() => {
+  //   fetchDataCategory();
+  // }, []);
 
   return (
     <div className="w-full flex flex-col items-center">
