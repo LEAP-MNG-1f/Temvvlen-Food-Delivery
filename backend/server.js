@@ -50,7 +50,7 @@ cloudinary.config({
 
 //--------------------Food--------------------//
 
-app.use("/api", userRouter);
+// app.use("/api", userRouter);
 
 // app.get("/foods", async (request, response) => {
 //   const results = await foodModel.find();
