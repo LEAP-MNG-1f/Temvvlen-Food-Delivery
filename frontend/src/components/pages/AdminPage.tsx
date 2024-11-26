@@ -62,7 +62,7 @@ export const AdminPage = () => {
                   >
                     {category.name}
                   </p>
-                  {/* {focus === category.name ? <ThreeDot /> : <BlackThreeDot />} */}
+                  {focus === category.name ? <ThreeDot /> : <BlackThreeDot />}
                 </button>
               );
             })}
