@@ -72,10 +72,10 @@ export const AdminPage = () => {
         <div className="py-6 pl-8 pr-8 min-h-screen bg-[#F7F7F8] w-full flex flex-col gap-8">
           <div className="mt-[56px]">
             <div className="py-4 flex items-center justify-between">
-              <p className="text-[#272727] font-poppins text-[22px] font-bold leading-[33px]">
+              {/* <p className="text-[#272727] font-poppins text-[22px] font-bold leading-[33px]">
                 Breakfast
               </p>
-              <AddFood />
+              <AddFood /> */}
             </div>
             <div></div>
           </div>
