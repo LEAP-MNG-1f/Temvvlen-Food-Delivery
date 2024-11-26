@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Header } from "../constant";
-import { BlackThreeDot, Plus, ThreeDot } from "../svg";
+import { BlackThreeDot, ThreeDot } from "../svg";
 import { AddCategory } from "../ui/AddCategory";
 import { AddFood } from "../ui/AddFood";
 

@@ -1,13 +1,22 @@
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
-const foodSchema = new Schema({
+const foodSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-  price: Number,
+  image: {
+    type: String,
+    required: true,
+  },
+  ingeredient: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
 });
 
-const foodModel = model("food", foodSchema);
-
-export default foodModel;
+export const Food = mongoose.model("Food", foodSchema);

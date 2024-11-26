@@ -3,21 +3,21 @@ import { v2 as cloudinary } from "cloudinary";
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
-import foodModel from "./model/food.js";
 import userRouter from "./routes/userRoute.js";
+import foodRouter from "./routes/foodRoute.js";
 
 dotenv.config();
-
 mongoose.connect(process.env.MONGODB_API);
 
 const app = express();
-const PORT = 8000;
+const PORT = 8800;
 
 app.use(cors());
+app.use(bodyParser.json());
 
 //--------------------Cloudinary--------------------//
+
 cloudinary.config({
   cloud_name: "dsjr8e4oe",
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -29,14 +29,14 @@ cloudinary.config({
   const result = await cloudinary.uploader.upload(
     "https://res.cloudinary.com/dsjr8e4oe/image/upload/v1731982251/417dc4f856c8e6327152022aab0504fb_ykjibf.png"
   );
-  console.log(result);
+  // console.log(result);
 
   // Optimize delivery by resizing and applying auto-format and auto-quality
   const optimizeUrl = cloudinary.url(result.public_id, {
     fetch_format: "auto",
     quality: "auto",
   });
-  console.log(optimizeUrl);
+  // console.log(optimizeUrl);
 
   // Transform the image: auto-crop to square aspect_ratio
   const autoCropUrl = cloudinary.url(result.public_id, {
@@ -45,12 +45,13 @@ cloudinary.config({
     width: 500,
     height: 500,
   });
-  console.log(autoCropUrl);
+  // console.log(autoCropUrl);
 })();
 
-//--------------------Food--------------------//
+//--------------------Router--------------------//
 
 app.use("/api", userRouter);
+app.use("/api", foodRouter);
 
 // app.get("/foods", async (request, response) => {
 //   const results = await foodModel.find();
