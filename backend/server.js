@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRoute.js";
 import foodRouter from "./routes/foodRoute.js";
+import orderRouter from "./routes/orderRoute.js";
 
 dotenv.config();
 mongoose.connect(process.env.MONGODB_API);
@@ -52,6 +53,7 @@ cloudinary.config({
 
 app.use("/api", userRouter);
 app.use("/api", foodRouter);
+app.use("/api", orderRouter);
 
 // app.get("/foods", async (request, response) => {
 //   const results = await foodModel.find();

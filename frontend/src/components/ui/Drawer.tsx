@@ -18,6 +18,7 @@ type CartItem = {
 };
 
 export default function ShopDrawer() {
+  const BACKEND_ENDPOINT = process.env.BACKEND_URL;
   const [dataCart, setDataCart] = useState<CartItem[]>([]);
   const [state, setState] = useState({
     right: false,
@@ -27,24 +28,24 @@ export default function ShopDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  // const fetchDataCart = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:8000/cart-items");
+  const fetchDataCart = async () => {
+    try {
+      const response = await fetch(`${BACKEND_ENDPOINT}/api/foods`);
 
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! Status: ${response.status}`);
-  //     }
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
 
-  //     const category = await response.json();
-  //     setDataCart(category.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+      const category = await response.json();
+      setDataCart(category.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchDataCart();
-  // }, []);
+  useEffect(() => {
+    fetchDataCart();
+  }, []);
 
   const list = (anchor: Anchor) => (
     <Box
