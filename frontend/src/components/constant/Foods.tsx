@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { GreenArrow, GreenStar } from "../svg";
 import { Card } from "../ui/Card";
 
-type Food = {
+type FoodType = {
   id: number;
   name: string;
   price: string;
@@ -13,8 +13,8 @@ type Food = {
 };
 
 export const Foods = () => {
-  const [dataFood, setDataFood] = useState<Food[]>([]);
   const BACKEND_ENDPOINT = process.env.BACKEND_URL;
+  const [dataFood, setDataFood] = useState<FoodType[]>([]);
 
   const fetchFoodData = async () => {
     try {
@@ -23,6 +23,7 @@ export const Foods = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
+
       const food = await response.json();
       setDataFood(food.data);
     } catch (error) {
@@ -33,6 +34,7 @@ export const Foods = () => {
   useEffect(() => {
     fetchFoodData();
   }, []);
+
   return (
     <div className="w-full bg-white flex justify-center z-[1]">
       <div className="max-w-[1200px] w-full flex flex-col gap-20">
@@ -108,11 +110,7 @@ export const Foods = () => {
           </div>
           <div className="flex justify-between items-center">
             {dataFood?.map((item, id) => {
-              return (
-                <div key={id}>
-                  <Card item={item} />
-                </div>
-              );
+              return <Card item={item} key={id} />;
             })}
           </div>
         </div>

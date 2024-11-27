@@ -1,9 +1,8 @@
 import { Category } from "../models/category.js";
+// import { ObjectId } from "mongodb";
 
 const createCategory = async (request, response) => {
-  const result = await Category.create({
-    name: "Breakfast",
-  });
+  const result = await Category.create(request.body);
 
   response.json({
     success: true,
@@ -20,4 +19,13 @@ const getAllCategorys = async (request, response) => {
   });
 };
 
-export { createCategory, getAllCategorys };
+const updateCategory = async (request, response) => {
+  const result = await Category.findOneAndUpdate(request.body);
+
+  response.json({
+    success: true,
+    data: result,
+  });
+};
+
+export { createCategory, getAllCategorys, updateCategory };

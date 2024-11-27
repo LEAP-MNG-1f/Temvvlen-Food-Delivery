@@ -2,45 +2,72 @@
 
 import { useEffect, useState } from "react";
 import { Header } from "../constant";
-import { BlackThreeDot, ThreeDot } from "../svg";
+import { BlackThreeDot, Pencil, ThreeDot, Trash } from "../svg";
 import { AddCategory } from "../ui/AddCategory";
 import { AddFood } from "../ui/AddFood";
+import { Card } from "../ui/Card";
 
-interface CategoryType {
+type CategoryType = {
   name: string;
-}
+};
+
+type FoodType = {
+  id: number;
+  name: string;
+  price: string;
+  ingeredient: string;
+  image: string;
+};
 
 export const AdminPage = () => {
+  const BACKEND_ENDPOINT = process.env.BACKEND_URL;
   const [dataCategory, setDataCategory] = useState<CategoryType[]>([]);
-  const [focus, setFocus] = useState("Breakfast");
+  const [dataFood, setDataFood] = useState<FoodType[]>([]);
+  const [focus, setFocus] = useState("");
 
   const handelClickFocus = (value: string) => {
     setFocus(value);
   };
 
-  // const fetchDataCategory = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:8000/categorys");
+  const fetchDataCategory = async () => {
+    try {
+      const response = await fetch(`${BACKEND_ENDPOINT}/categorys`);
 
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! Status: ${response.status}`);
-  //     }
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
 
-  //     const category = await response.json();
-  //     setDataCategory(category.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+      const category = await response.json();
+      setDataCategory(category.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchDataCategory();
-  // }, []);
+  const fetchDataFood = async () => {
+    try {
+      const response = await fetch(`${BACKEND_ENDPOINT}/foods`);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const food = await response.json();
+      setDataFood(food.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataCategory();
+    fetchDataFood();
+  }, []);
 
   return (
     <div className="w-full flex flex-col items-center">
       <Header home="" menu="" location="" />
-      <div className="max-w-[1264px] w-full flex">
+      <div className="max-w-[1272px] w-full flex">
         <div className="max-w-[314px] w-full py-[26px] pr-6 pl-8 flex flex-col gap-10 mt-[56px]">
           <p className="text-[#272727] font-poppins text-[22px] font-bold leading-[33px]">
             Food menu
@@ -62,7 +89,40 @@ export const AdminPage = () => {
                   >
                     {category.name}
                   </p>
-                  {focus === category.name ? <ThreeDot /> : <BlackThreeDot />}
+                  <div className="dropdown dropdown-right">
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="h-10 flex items-center justify-center"
+                    >
+                      {focus === category.name ? (
+                        <ThreeDot />
+                      ) : (
+                        <BlackThreeDot />
+                      )}
+                    </div>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content menu bg-white z-[1] w-[200px] rounded-lg p-0"
+                    >
+                      <li>
+                        <div className="px-4 py-2 flex items-center gap-4">
+                          <Pencil />
+                          <p className="text-[#161616] font-inter text-base font-medium">
+                            Edit name
+                          </p>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="px-4 py-2 flex items-center gap-4">
+                          <Trash />
+                          <p className="text-[#DF1F29] font-inter text-base font-medium">
+                            Delete Category
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </button>
               );
             })}
@@ -77,7 +137,11 @@ export const AdminPage = () => {
               </p>
               <AddFood />
             </div>
-            <div></div>
+            <div className="grid grid-cols-3 gap-x-6 gap-y-[60px]">
+              {dataFood?.map((item, id) => {
+                return <Card item={item} key={id} />;
+              })}
+            </div>
           </div>
         </div>
       </div>

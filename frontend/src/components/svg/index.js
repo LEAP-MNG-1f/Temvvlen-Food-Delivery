@@ -23,3 +23,6 @@ export * from "./DownArrowWhite";
 export * from "./Minus";
 export * from "./WhitePlus";
 export * from "./Close";
+export * from "./Pencil";
+export * from "./Trash";
+export * from "./UpArrow";

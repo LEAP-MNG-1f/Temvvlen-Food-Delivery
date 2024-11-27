@@ -1,16 +1,54 @@
 "use client";
 
-import { useRef } from "react";
+import { FC, useRef } from "react";
 import { Close, Plus } from "../svg";
+import { useFormik } from "formik";
 
-export const AddCategory = () => {
+type CategoryValues = {
+  name: string;
+};
+
+export const AddCategory: FC = () => {
+  const BACKEND_ENDPOINT = process.env.BACKEND_URL;
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const formik = useFormik<CategoryValues>({
+    initialValues: {
+      name: "",
+    },
+    onSubmit: async (values) => {
+      const requestData = {
+        ...values,
+      };
+      try {
+        const response = await fetch(`${BACKEND_ENDPOINT}/category`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestData),
+        });
+        const data = await response.json();
+
+        console.log(data);
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
+      } catch (error) {}
+    },
+  });
 
   const openModal = () => {
     if (dialogRef.current) {
       dialogRef.current.showModal();
     }
   };
+
+  const closeModal = () => {
+    if (dialogRef.current) {
+      dialogRef.current.close();
+    }
+  };
+
   return (
     <>
       <button
@@ -35,26 +73,36 @@ export const AddCategory = () => {
             </p>
             <div className="w-8 h-8"></div>
           </div>
-          <div className="p-6 flex flex-col justify-center gap-4 self-stretch">
-            <div className="flex flex-col gap-2 justify-center">
-              <label className="text-[#121316] font-poppins text-sm font-medium">
-                Ангилалын нэр
-              </label>
-              <input
-                type="text"
-                className="px-3 h-14 rounded-lg bg-[#F4F4F4] outline-none text-[#121316] font-inter text-base font-medium leading-5"
-                placeholder="Ангилалын нэр оруулна уу"
-              />
+          <form onSubmit={formik.handleSubmit}>
+            <div className="p-6 flex flex-col justify-center gap-4 self-stretch">
+              <div className="flex flex-col gap-2 justify-center">
+                <label className="text-[#121316] font-poppins text-sm font-medium">
+                  Ангилалын нэр
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  className="px-3 h-14 rounded-lg bg-[#F4F4F4] outline-none text-[#121316] font-inter text-base font-medium leading-5"
+                  placeholder="Ангилалын нэр оруулна уу"
+                  value={formik.values.name}
+                  onChange={formik.handleChange}
+                />
+              </div>
             </div>
-          </div>
-          <div className="p-6 flex gap-4 items-center justify-end border-t border-[#E0E0E0]">
-            <button className="p-2 text-[#3F4145] font-inter text-base font-bold">
-              Clear
-            </button>
-            <button className="px-4 py-2 rounded-[4px] bg-[#393939] text-white font-inter text-base font-bold">
-              Continue
-            </button>
-          </div>
+            <div className="p-6 flex gap-4 items-center justify-end border-t border-[#E0E0E0]">
+              <button className="p-2 text-[#3F4145] font-inter text-base font-bold">
+                Clear
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 rounded-[4px] bg-[#393939] text-white font-inter text-base font-bold"
+                onClick={closeModal}
+              >
+                Continue
+              </button>
+            </div>
+          </form>
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>Close</button>
