@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { GreenArrow, GreenStar } from "../svg";
 import { Card } from "../ui/Card";
@@ -16,7 +18,7 @@ export const Foods = () => {
 
   const fetchFoodData = async () => {
     try {
-      const response = await fetch(`${BACKEND_ENDPOINT}/api/foods`);
+      const response = await fetch(`${BACKEND_ENDPOINT}/foods`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

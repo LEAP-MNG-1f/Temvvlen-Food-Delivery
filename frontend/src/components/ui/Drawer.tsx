@@ -30,7 +30,7 @@ export default function ShopDrawer() {
 
   const fetchDataCart = async () => {
     try {
-      const response = await fetch(`${BACKEND_ENDPOINT}/api/foods`);
+      const response = await fetch(`${BACKEND_ENDPOINT}/foods`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

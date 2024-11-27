@@ -610,6 +610,13 @@
   resolved "https://registry.npmjs.org/@types/stylis/-/stylis-4.2.5.tgz"
   integrity sha512-1Xve+NMN7FWjY14vLoY5tL3BVEQ/n42YLwaqJIPYhotZ9uBHt87VceMwWQpzmdEt2TNXIorIFG+YeCUUW7RInw==
 
+"@types/yup@^0.32.0":
+  version "0.32.0"
+  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.32.0.tgz#2a19c3bbbb3aed1bd755204f83e800f9c95f249a"
+  integrity sha512-Gr2lllWTDxGVYHgWfL8szjdedERpNgm44L9BDL2cmcHG7Bfd6taEpiW3ayMFLaYvlJr/6bFXDJdh6L406AGlFg==
+  dependencies:
+    yup "*"
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz"
@@ -1183,11 +1190,6 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nanoclone@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/nanoclone/-/nanoclone-0.2.1.tgz#dd4090f8f1a110d26bb32c49ed2f5b9235209ed4"
-  integrity sha512-wynEP02LmIbLpcYw8uBKpcfF6dmg2vcpKqxeH5UcoKEYdExslsdUA4ugFauuaeYdTB76ez6gJW8XAZ6CgkXYxA==
-
 nanoid@^3.3.6, nanoid@^3.3.7:
   version "3.3.7"
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.7.tgz"
@@ -1376,7 +1378,7 @@ prop-types@^15.6.2, prop-types@^15.8.1:
     object-assign "^4.1.1"
     react-is "^16.13.1"
 
-property-expr@^2.0.4:
+property-expr@^2.0.5:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/property-expr/-/property-expr-2.0.6.tgz#f77bc00d5928a6c748414ad12882e83f24aec1e8"
   integrity sha512-SVtmxhRE/CGkn3eZY1T6pC8Nln6Fr/lu1mKSgRud0eC73whjGfoAogbn78LkD8aFL0zz3bAFerKSnOl7NlErBA==
@@ -1691,7 +1693,7 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
-tiny-case@^1.0.2:
+tiny-case@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-case/-/tiny-case-1.0.3.tgz#d980d66bc72b5d5a9ca86fb7c9ffdb9c898ddd03"
   integrity sha512-Eet/eeMhkO6TX8mnUteS9zgPbUMQa4I6Kkp5ORiBD5476/m+PIRiumP5tmh5ioJpH7k51Kehawy2UDfsnxxY8Q==
@@ -1727,6 +1729,11 @@ tslib@^2.0.0, tslib@^2.4.0:
   version "2.8.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
+
+type-fest@^2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
+  integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
 
 typescript@^5:
   version "5.6.3"
@@ -1778,12 +1785,12 @@ yaml@^2.3.4:
   resolved "https://registry.npmjs.org/yaml/-/yaml-2.6.0.tgz"
   integrity sha512-a6ae//JvKDEra2kdi1qzCyrJW/WZCgFi8ydDV+eXExl95t+5R+ijnqHJbz9tmMh8FUjx3iv2fCQ4dclAQlO2UQ==
 
-yup@1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/yup/-/yup-1.0.0-alpha.3.tgz#56a2e73889c6b3f341888be72dd2b110b522bb98"
-  integrity sha512-E2ZLViIvHBgTPjAq8KyaG/4WIkwLi6vKwupzcKwN3C1CnIwihYSfgKueP++Q9fICNWeI5/FhJO+C2bptWF6kKA==
+yup@*, yup@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-1.4.0.tgz#898dcd660f9fb97c41f181839d3d65c3ee15a43e"
+  integrity sha512-wPbgkJRCqIf+OHyiTBQoJiP5PFuAXaWiJK6AmYkzQAh5/c2K9hzSApBZG5wV9KoKSePF7sAxmNSvh/13YHkFDg==
   dependencies:
-    nanoclone "^0.2.1"
-    property-expr "^2.0.4"
-    tiny-case "^1.0.2"
+    property-expr "^2.0.5"
+    tiny-case "^1.0.3"
     toposort "^2.0.2"
+    type-fest "^2.19.0"

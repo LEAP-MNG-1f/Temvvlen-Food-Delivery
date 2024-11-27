@@ -5,10 +5,10 @@ const foodSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-    required: true,
-  },
+  // image: {
+  //   type: String,
+  //   required: true,
+  // },
   ingeredient: {
     type: String,
     required: true,
