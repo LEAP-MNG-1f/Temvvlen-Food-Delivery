@@ -1,4 +1,4 @@
-import mongoose, { now } from "mongoose";
+import mongoose from "mongoose";
 
 const roleEnum = {
   values: ["Хүлээгдэж буй", "Амжилттай"],
