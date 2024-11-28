@@ -4,15 +4,12 @@ import { FC, useEffect, useState } from "react";
 import { UpArrow } from "../svg";
 
 type CategoryType = {
-  id: string;
+  _id: string;
   name: string;
 };
 
 type ChooseCategoryProps = {
   onCategoryChange: (category: CategoryType) => void;
-  value: string;
-  id: string;
-  name: string;
 };
 
 export const ChooseCategory: FC<ChooseCategoryProps> = ({
@@ -76,13 +73,13 @@ export const ChooseCategory: FC<ChooseCategoryProps> = ({
         </div>
         {open && (
           <div className="absolute top-[100%] left-0 max-w-[539px] w-full overflow-y-scroll rounded-lg bg-white z-[1] border border-[#D6D8DB]">
-            {dataCategory?.map((category, id) => {
+            {dataCategory?.map((category) => {
               return (
                 <button
                   type="button"
-                  key={id}
+                  key={category._id}
                   onClick={onOptionClicked(category)}
-                  value={category.id}
+                  value={category._id}
                   className="w-full flex flex-col"
                 >
                   <div className="px-3 h-12 flex items-center">

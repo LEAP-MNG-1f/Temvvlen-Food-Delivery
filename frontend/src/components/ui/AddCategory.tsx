@@ -30,10 +30,13 @@ export const AddCategory: FC = () => {
         });
         const data = await response.json();
 
-        console.log(data);
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
-      } catch (error) {}
+
+        closeModal();
+      } catch (error) {
+        console.error(error);
+      }
     },
   });
 
@@ -91,13 +94,16 @@ export const AddCategory: FC = () => {
               </div>
             </div>
             <div className="p-6 flex gap-4 items-center justify-end border-t border-[#E0E0E0]">
-              <button className="p-2 text-[#3F4145] font-inter text-base font-bold">
+              <button
+                type="button"
+                className="p-2 text-[#3F4145] font-inter text-base font-bold"
+                onClick={() => formik.resetForm()}
+              >
                 Clear
               </button>
               <button
                 type="submit"
                 className="px-4 py-2 rounded-[4px] bg-[#393939] text-white font-inter text-base font-bold"
-                onClick={closeModal}
               >
                 Continue
               </button>

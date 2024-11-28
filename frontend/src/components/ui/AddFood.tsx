@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { Close } from "../svg";
 import { useFormik } from "formik";
 import { ChooseCategory } from "./ChooseCategory";
@@ -8,10 +8,10 @@ import { Category } from "../constant";
 
 type FoodValues = {
   name: string;
-  // image: string;
   ingeredient: string;
   price: string;
   categoryId: string;
+  image: File | null;
 };
 
 export const AddFood: FC = () => {
@@ -21,10 +21,10 @@ export const AddFood: FC = () => {
   const formik = useFormik<FoodValues>({
     initialValues: {
       name: "",
-      // image: "",
       ingeredient: "",
       categoryId: "",
       price: "",
+      image: null,
     },
     onSubmit: async (values) => {
       const requestData = {
@@ -40,7 +40,6 @@ export const AddFood: FC = () => {
         });
         const data = await response.json();
 
-        console.log(data);
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -63,8 +62,8 @@ export const AddFood: FC = () => {
     }
   };
 
-  const handleCategoryChange = (category: { id: string }) => {
-    formik.setFieldValue("categoryId", category.id);
+  const handleCategoryChange = (category: { _id: string }) => {
+    formik.setFieldValue("categoryId", category._id);
   };
 
   return (
@@ -108,12 +107,7 @@ export const AddFood: FC = () => {
                 <label className="text-[#121316] font-poppins text-sm font-medium">
                   Хоолны ангилал
                 </label>
-                <ChooseCategory
-                  onCategoryChange={handleCategoryChange}
-                  value={formik.values.categoryId}
-                  id="categoryId"
-                  name="categoryId"
-                />
+                <ChooseCategory onCategoryChange={handleCategoryChange} />
               </div>
               <div className="flex flex-col gap-2 justify-center">
                 <label className="text-[#121316] font-poppins text-sm font-medium">
