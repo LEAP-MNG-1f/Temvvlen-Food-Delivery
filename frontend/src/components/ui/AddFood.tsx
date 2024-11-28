@@ -4,12 +4,14 @@ import { FC, useRef } from "react";
 import { Close } from "../svg";
 import { useFormik } from "formik";
 import { ChooseCategory } from "./ChooseCategory";
+import { Category } from "../constant";
 
 type FoodValues = {
   name: string;
   // image: string;
   ingeredient: string;
   price: string;
+  categoryId: string;
 };
 
 export const AddFood: FC = () => {
@@ -21,6 +23,7 @@ export const AddFood: FC = () => {
       name: "",
       // image: "",
       ingeredient: "",
+      categoryId: "",
       price: "",
     },
     onSubmit: async (values) => {
@@ -40,7 +43,11 @@ export const AddFood: FC = () => {
         console.log(data);
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
-      } catch (error) {}
+
+        closeModal();
+      } catch (error) {
+        console.error(error);
+      }
     },
   });
 
@@ -54,6 +61,10 @@ export const AddFood: FC = () => {
     if (dialogRef.current) {
       dialogRef.current.close();
     }
+  };
+
+  const handleCategoryChange = (category: { id: string }) => {
+    formik.setFieldValue("categoryId", category.id);
   };
 
   return (
@@ -97,7 +108,12 @@ export const AddFood: FC = () => {
                 <label className="text-[#121316] font-poppins text-sm font-medium">
                   Хоолны ангилал
                 </label>
-                <ChooseCategory />
+                <ChooseCategory
+                  onCategoryChange={handleCategoryChange}
+                  value={formik.values.categoryId}
+                  id="categoryId"
+                  name="categoryId"
+                />
               </div>
               <div className="flex flex-col gap-2 justify-center">
                 <label className="text-[#121316] font-poppins text-sm font-medium">
@@ -162,13 +178,16 @@ export const AddFood: FC = () => {
               </div>
             </div>
             <div className="p-6 flex gap-4 items-center justify-end border-t border-[#E0E0E0]">
-              <button className="p-2 text-[#3F4145] font-inter text-base font-bold">
+              <button
+                type="button"
+                className="p-2 text-[#3F4145] font-inter text-base font-bold"
+                onClick={() => formik.resetForm()}
+              >
                 Clear
               </button>
               <button
                 type="submit"
                 className="px-4 py-2 rounded-[4px] bg-[#393939] text-white font-inter text-base font-bold"
-                onClick={closeModal}
               >
                 Continue
               </button>

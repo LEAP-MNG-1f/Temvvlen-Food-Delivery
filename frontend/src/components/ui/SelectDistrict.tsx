@@ -44,7 +44,7 @@ export const SelectDistrict = () => {
         </div>
         {open && (
           <div className="absolute top-[100%] left-0 max-w-[384px] w-full max-h-[240px] overflow-y-scroll rounded-[4px] bg-white z-[1]">
-            {districts.map((value) => {
+            {districts?.map((value) => {
               return (
                 <button
                   type="button"
