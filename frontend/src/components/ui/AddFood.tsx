@@ -171,7 +171,7 @@ export const AddFood: FC = () => {
                 </div>
               </div>
             </div>
-            {/* <div className="p-6 flex gap-4 items-center justify-end border-t border-[#E0E0E0]">
+            <div className="p-6 flex gap-4 items-center justify-end border-t border-[#E0E0E0]">
               <button
                 type="button"
                 className="p-2 text-[#3F4145] font-inter text-base font-bold"
@@ -185,7 +185,7 @@ export const AddFood: FC = () => {
               >
                 Continue
               </button>
-            </div> */}
+            </div>
           </form>
         </div>
         <form method="dialog" className="modal-backdrop">
