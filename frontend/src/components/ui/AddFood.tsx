@@ -171,7 +171,7 @@ export const AddFood: FC = () => {
               </div>
             </div>
             <div className="p-6 flex gap-4 items-center justify-end border-t border-[#E0E0E0]">
-              {/* <button
+              <button
                 type="button"
                 className="p-2 text-[#3F4145] font-inter text-base font-bold"
                 onClick={() => formik.resetForm()}
@@ -183,7 +183,7 @@ export const AddFood: FC = () => {
                 className="px-4 py-2 rounded-[4px] bg-[#393939] text-white font-inter text-base font-bold"
               >
                 Continue
-              </button> */}
+              </button>
             </div>
           </form>
         </div>
