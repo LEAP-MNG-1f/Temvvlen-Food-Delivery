@@ -178,12 +178,12 @@ export const AddFood: FC = () => {
               >
                 Clear
               </button>
-              {/* <button
+              <button
                 type="submit"
                 className="px-4 py-2 rounded-[4px] bg-[#393939] text-white font-inter text-base font-bold"
               >
                 Continue
-              </button> */}
+              </button>
             </div>
           </form>
         </div>
