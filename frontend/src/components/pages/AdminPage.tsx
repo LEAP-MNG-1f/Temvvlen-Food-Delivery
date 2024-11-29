@@ -5,18 +5,19 @@ import { Header } from "../constant";
 import { BlackThreeDot, Pencil, ThreeDot, Trash } from "../svg";
 import { AddCategory } from "../ui/AddCategory";
 import { AddFood } from "../ui/AddFood";
-import { Card } from "../ui/Card";
+import { AdminCard } from "../ui/AdminCard";
 
 type CategoryType = {
   name: string;
 };
 
 type FoodType = {
-  id: number;
+  _id: number;
   name: string;
   price: string;
   ingeredient: string;
   image: string;
+  categoryId: string;
 };
 
 export const AdminPage = () => {
@@ -138,8 +139,8 @@ export const AdminPage = () => {
               <AddFood />
             </div>
             <div className="grid grid-cols-3 gap-x-6 gap-y-[60px]">
-              {dataFood?.map((item, id) => {
-                return <Card item={item} key={id} />;
+              {dataFood?.map((item) => {
+                return <AdminCard item={item} key={item._id} />;
               })}
             </div>
           </div>

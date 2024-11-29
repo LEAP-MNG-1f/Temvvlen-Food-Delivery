@@ -1,8 +1,6 @@
-"use client";
-
-import { FC, useEffect, useRef, useState } from "react";
-import { Close } from "../svg";
+import { FC, useRef } from "react";
 import { useFormik } from "formik";
+import { Close } from "../svg";
 import { ChooseCategory } from "./ChooseCategory";
 
 type FoodValues = {
@@ -10,12 +8,16 @@ type FoodValues = {
   ingeredient: string;
   price: string;
   categoryId: string;
-  image: File | null;
+  image: string;
 };
 
-export const AddFood: FC = () => {
+type CardPropsType = {
+  item: FoodValues;
+};
+
+export const AdminCard: FC<CardPropsType> = ({ item }) => {
   const BACKEND_ENDPOINT = process.env.BACKEND_URL;
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   const formik = useFormik<FoodValues>({
     initialValues: {
@@ -23,7 +25,7 @@ export const AddFood: FC = () => {
       ingeredient: "",
       categoryId: "",
       price: "",
-      image: null,
+      image: "",
     },
     onSubmit: async (values) => {
       const requestData = {
@@ -50,15 +52,11 @@ export const AddFood: FC = () => {
   });
 
   const openModal = () => {
-    if (dialogRef.current) {
-      dialogRef.current.showModal();
-    }
+    modalRef.current?.showModal();
   };
 
   const closeModal = () => {
-    if (dialogRef.current) {
-      dialogRef.current.close();
-    }
+    modalRef?.current?.close();
   };
 
   const handleCategoryChange = (category: { _id: string }) => {
@@ -68,12 +66,33 @@ export const AddFood: FC = () => {
   return (
     <>
       <button
-        className="px-4 py-2 rounded-[4px] bg-[#18BA51] text-white font-sans text-base font-normal leading-[19px]"
+        className="flex flex-col gap-[14px] max-w-[282px] w-full relative"
         onClick={openModal}
       >
-        Add new food
+        <img
+          src={item.image}
+          className="w-[282px] h-[186px] shadow-[0px_3px_6px_-2px_rgba(0,0,0,0.10),0px_6px_10px_0px_rgba(0,0,0,0.07)] rounded-2xl object-cover object-center"
+        />
+        {/* <div className="absolute px-4 py-1 rounded-2xl border border-white bg-[#18BA51] backdrop-blur-[50px] top-4 right-4">
+        <p className="text-white font-poppins text-lg font-semibold leading-[27px]">
+          {item.saletag}%
+        </p>
+      </div> */}
+        <div className="flex flex-col gap-[2px] items-start">
+          <p className="text-[#000000] font-poppins text-lg font-semibold leading-[27px]">
+            {item.name}
+          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-[#18BA51] font-poppins text-lg font-semibold leading-[27px]">
+              {item.price}₮
+            </p>
+            {/* <p className="text-[#272727] font-poppins text-lg font-normal leading-[27px] line-through">
+              {item.discount}₮
+            </p> */}
+          </div>
+        </div>
       </button>
-      <dialog ref={dialogRef} id="addModal" className="modal">
+      <dialog ref={modalRef} id="addModal" className="modal">
         <div className="modal-box p-0 max-w-[587px] w-full bg-white rounded-2xl flex flex-col">
           <div className="px-6 py-4 flex items-center justify-between border-b border-[#E0E0E0]">
             <form method="dialog">
@@ -129,7 +148,7 @@ export const AddFood: FC = () => {
                 <input
                   id="price"
                   name="price"
-                  type="number"
+                  type="text"
                   className="px-3 h-14 rounded-lg bg-[#F4F4F4] outline-none text-[#121316] font-inter text-base font-medium leading-5"
                   placeholder="Хоолны үнэ оруулна уу"
                   value={formik.values.price}

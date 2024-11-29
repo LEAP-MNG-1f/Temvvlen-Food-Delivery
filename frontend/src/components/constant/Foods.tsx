@@ -5,7 +5,7 @@ import { GreenArrow, GreenStar } from "../svg";
 import { Card } from "../ui/Card";
 
 type FoodType = {
-  id: number;
+  _id: number;
   name: string;
   price: string;
   ingeredient: string;
@@ -109,8 +109,8 @@ export const Foods = () => {
             </div>
           </div>
           <div className="flex justify-between items-center">
-            {dataFood?.map((item, id) => {
-              return <Card item={item} key={id} />;
+            {dataFood?.map((item) => {
+              return <Card item={item} key={item._id} />;
             })}
           </div>
         </div>

@@ -1,22 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { FC, useState } from "react";
 import { DownArrow, DownArrowWhite, Location, LocationWhite } from "../svg";
-import { apartment, khoroo } from "./data";
+import { apartment } from "./data";
 
-type Apartment = {
-  apartment: string;
+type ApartmentType = {
+  name: string;
 };
 
-export const SelectApartment = () => {
+type ChooseApartmentProps = {
+  onApartmentChange: (apartment: ApartmentType) => void;
+};
+
+export const SelectApartment: FC<ChooseApartmentProps> = ({
+  onApartmentChange,
+}) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<Apartment | null>(null);
+  const [selectedOption, setSelectedOption] = useState<ApartmentType | null>(
+    null
+  );
 
   const toggling = () => setOpen(!open);
 
-  const onOptionClicked = (value: Apartment) => () => {
+  const onOptionClicked = (value: ApartmentType) => () => {
     setSelectedOption(value);
+    onApartmentChange(value);
     setOpen(false);
   };
 
@@ -36,9 +45,13 @@ export const SelectApartment = () => {
             className={`w-full font-sans text-base font-normal leading-[19px] 
                 ${selectedOption ? "text-white" : "text-[#8B8E95]"}`}
           >
-            {selectedOption?.apartment || "Байр гудамж сонгоно уу"}
+            {selectedOption?.name || "Байр гудамж сонгоно уу"}
           </p>
-          <div className="w-6 h-6">
+          <div
+            className={`transition-all duration-300 w-6 h-6 ${
+              open ? "rotate-180" : "rotate-0"
+            }`}
+          >
             {selectedOption ? <DownArrowWhite /> : <DownArrow />}
           </div>
         </div>
@@ -48,12 +61,13 @@ export const SelectApartment = () => {
               return (
                 <button
                   type="button"
-                  key={value.apartment}
+                  key={value.name}
                   onClick={onOptionClicked(value)}
+                  value={value.name}
                   className="w-full px-4 py-2 h-12 flex gap-1 items-center text-[#373737] font-sans text-base font-normal leading-[19px]"
                 >
                   <Location />
-                  {value.apartment}
+                  {value.name}
                 </button>
               );
             })}

@@ -1,22 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { FC, useState } from "react";
 import { DownArrow, DownArrowWhite, Location, LocationWhite } from "../svg";
 import { khoroo } from "./data";
 
-type Khoroo = {
-  khoroo: string;
+type KhorooType = {
+  name: string;
 };
 
-export const SelectKhoroo = () => {
+type ChooseKhorooProps = {
+  onKhorooChange: (khoroo: KhorooType) => void;
+};
+
+export const SelectKhoroo: FC<ChooseKhorooProps> = ({ onKhorooChange }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<Khoroo | null>(null);
+  const [selectedOption, setSelectedOption] = useState<KhorooType | null>(null);
 
   const toggling = () => setOpen(!open);
 
-  const onOptionClicked = (value: Khoroo) => () => {
+  const onOptionClicked = (value: KhorooType) => () => {
     setSelectedOption(value);
+    onKhorooChange(value);
     setOpen(false);
   };
 
@@ -36,9 +41,13 @@ export const SelectKhoroo = () => {
             className={`w-full font-sans text-base font-normal leading-[19px] 
                 ${selectedOption ? "text-white" : "text-[#8B8E95]"}`}
           >
-            {selectedOption?.khoroo || "Хороо сонгоно уу"}
+            {selectedOption?.name || "Хороо сонгоно уу"}
           </p>
-          <div className="w-6 h-6">
+          <div
+            className={`transition-all duration-300 w-6 h-6 ${
+              open ? "rotate-180" : "rotate-0"
+            }`}
+          >
             {selectedOption ? <DownArrowWhite /> : <DownArrow />}
           </div>
         </div>
@@ -48,12 +57,13 @@ export const SelectKhoroo = () => {
               return (
                 <button
                   type="button"
-                  key={value.khoroo}
+                  key={value.name}
                   onClick={onOptionClicked(value)}
+                  value={value.name}
                   className="w-full px-4 py-2 h-12 flex gap-1 items-center text-[#373737] font-sans text-base font-normal leading-[19px]"
                 >
                   <Location />
-                  {value.khoroo}
+                  {value.name}
                 </button>
               );
             })}

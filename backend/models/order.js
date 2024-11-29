@@ -1,34 +1,38 @@
 import mongoose from "mongoose";
 
 const roleEnum = {
-  values: ["Хүлээгдэж буй", "Амжилттай"],
+  values: ["active", "progress", "waiting", "delivered"],
+};
+
+const paymentEnum = {
+  values: ["cash", "card"],
 };
 
 const orderSchema = new mongoose.Schema({
   userId: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
-    required: true,
+    // required: true,
   },
   orderNumber: {
     type: Number,
-    required: true,
+    // required: true,
   },
   foods: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Food",
-      required: true,
+      // required: true,
     },
   ],
   totalPrice: {
     type: String,
-    required: true,
+    // required: true,
   },
   process: {
     type: String,
     enum: roleEnum,
-    default: "Хүлээгдэж буй",
+    default: "active",
   },
   createdDate: {
     type: Date,
@@ -45,6 +49,18 @@ const orderSchema = new mongoose.Schema({
   apartment: {
     type: String,
     required: true,
+  },
+  phoneNumber: {
+    type: Number,
+    required: true,
+  },
+  information: {
+    type: String,
+    required: true,
+  },
+  paymenType: {
+    type: String,
+    enum: paymentEnum,
   },
 });
 

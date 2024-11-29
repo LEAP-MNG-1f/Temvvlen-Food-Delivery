@@ -1,3 +1,5 @@
+"use client";
+
 import { Footer, Header } from "../constant";
 import { BlueCircle } from "../svg";
 import * as React from "react";
@@ -5,15 +7,77 @@ import Checkbox from "@mui/material/Checkbox";
 import { SelectDistrict } from "../ui/SelectDistrict";
 import { SelectKhoroo } from "../ui/SelectKhoroo";
 import { SelectApartment } from "../ui/SelectApartment";
+import { useFormik } from "formik";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
+type FoodValues = {
+  userId: string;
+  orderNumber: number;
+  totalPrice: string;
+  district: string;
+  khoroo: string;
+  apartment: string;
+  information: string;
+  phoneNumber: string;
+};
+
 export const OrderPage = () => {
+  const BACKEND_ENDPOINT = process.env.BACKEND_URL;
+
+  const formik = useFormik<FoodValues>({
+    initialValues: {
+      userId: "",
+      orderNumber: 0,
+      totalPrice: "",
+      district: "",
+      khoroo: "",
+      apartment: "",
+      information: "",
+      phoneNumber: "",
+    },
+    onSubmit: async (values) => {
+      const requestData = {
+        ...values,
+      };
+      try {
+        const response = await fetch(`${BACKEND_ENDPOINT}/order`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestData),
+        });
+        const data = await response.json();
+
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  });
+
+  const handleKhorooChange = (value: { name: string }) => {
+    formik.setFieldValue("district", value.name);
+  };
+
+  const handleDistrictChange = (value: { name: string }) => {
+    formik.setFieldValue("khoroo", value.name);
+  };
+
+  const handleApartmentChange = (value: { name: string }) => {
+    formik.setFieldValue("apartment", value.name);
+  };
+
   return (
     <div className="min-h-screen w-full flex flex-col justify-between">
       <div className="w-full flex flex-col items-center gap-12">
         <Header home="" menu="" location="" />
-        <div className="flex gap-[180px] z-[1] mb-20 mt-[105px]">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="flex gap-[180px] z-[1] mb-20 mt-[105px]"
+        >
           <div className="w-[432px] flex flex-col gap-6">
             <div className="px-6 py-4 flex items-center gap-4">
               <BlueCircle />
@@ -29,33 +93,41 @@ export const OrderPage = () => {
                 </p>
               </div>
             </div>
-            <form className="h-[615px] p-6 flex flex-col gap-10 rounded-2xl shadow-[0px_0px_20px_0px_rgba(0,0,0,0.05)]">
+            <div className="h-[615px] p-6 flex flex-col gap-10 rounded-2xl shadow-[0px_0px_20px_0px_rgba(0,0,0,0.05)]">
               <div className="flex flex-col gap-4">
-                <p className="text-black font-sans text-sm font-normal leading-[17px]">
+                <label className="text-black font-sans text-sm font-normal leading-[17px]">
                   Хаяг аа оруулна уу
-                </p>
-                <SelectDistrict />
-                <SelectKhoroo />
-                <SelectApartment />
+                </label>
+                <SelectDistrict onDistrictChange={handleDistrictChange} />
+                <SelectKhoroo onKhorooChange={handleKhorooChange} />
+                <SelectApartment onApartmentChange={handleApartmentChange} />
               </div>
               <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1">
-                  <p className="text-black font-sans text-sm font-normal leaidng-[17px]">
+                  <label className="text-black font-sans text-sm font-normal leaidng-[17px]">
                     Нэмэлт мэдээлэл
-                  </p>
+                  </label>
                   <textarea
+                    id="information"
+                    name="information"
                     className="h-[112px] px-4 py-2 rounded-[4px] border border-[#ECEDF0] bg-[#F7F7F8] resize-none outline-none text-black font-sans text-base font-normal leading-[19px]"
                     placeholder="Орц, давхар, орцны код ..."
+                    value={formik.values.information}
+                    onChange={formik.handleChange}
                   ></textarea>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <p className="text-black font-sans text-sm font-normal leading-[17px]">
+                  <label className="text-black font-sans text-sm font-normal leading-[17px]">
                     Утасны дугаар*
-                  </p>
+                  </label>
                   <input
-                    type="text"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="number"
                     placeholder="Утасны дугаараа оруулна уу"
                     className="h-12 px-4 py-2 rounded-[4px] border border-[#ECEDF0] bg-[#F7F7F8] text-black font-sans text-base font-normal leading-[19px] outline-none"
+                    value={formik.values.phoneNumber}
+                    onChange={formik.handleChange}
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -96,7 +168,7 @@ export const OrderPage = () => {
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
           <div className="w-[432px] flex flex-col gap-6">
             <div className="px-6 py-4 flex items-center gap-4">
@@ -124,13 +196,16 @@ export const OrderPage = () => {
                     34,800₮
                   </p>
                 </div>
-                <button className="w-full h-12 bg-[#EEEFF2] px-4 py-2 rounded-[4px] text-[rgba(28,32,36,0.24)] font-sans text-base font-normal leading-[19px]">
+                <button
+                  type="submit"
+                  className="w-full h-12 bg-[#EEEFF2] px-4 py-2 rounded-[4px] text-[rgba(28,32,36,0.24)] font-sans text-base font-normal leading-[19px]"
+                >
                   Захиалах
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
       <Footer />
     </div>

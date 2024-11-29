@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { FC, useRef } from "react";
 import { Minus, WhitePlus } from "../svg";
 
 type Food = {
-  id: number;
+  _id: number;
   name: string;
   price: string;
   ingeredient: string;
@@ -22,6 +21,7 @@ export const Card: FC<CardPropsType> = ({ item }) => {
   const openModal = () => {
     modalRef.current?.showModal();
   };
+
   return (
     <>
       <button

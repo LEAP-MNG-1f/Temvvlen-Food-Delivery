@@ -74,7 +74,7 @@ export default function ShopDrawer() {
           })}
         </div>
       </div>
-      <div className="w-[586px] h-[172px] shadow-[0px_-4px_8px_0px_rgba(187,190,205,0.20)] px-8 py-[10px] flex items-center gap-[10px] fixed bottom-0 z-10">
+      <div className="w-[586px] h-[172px] shadow-[0px_-4px_8px_0px_rgba(187,190,205,0.20)] px-8 py-[10px] flex items-center gap-[10px] fixed bottom-0 z-10 bg-white">
         <div className="w-full flex flex-col">
           <p className="text-[#5E6166] font-poppins text-lg font-normal leading-[27px]">
             Нийт төлөх дүн
@@ -83,7 +83,6 @@ export default function ShopDrawer() {
             34,800₮
           </p>
         </div>
-
         <Link
           href="/order"
           className="w-full flex justify-center items-center cursor-pointer px-4 py-2 rounded-[4px] bg-[#18BA51] h-12 text-white font-sans text-base font-normal leading-[19px]"
