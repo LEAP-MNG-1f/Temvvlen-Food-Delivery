@@ -193,9 +193,9 @@ export const AddFood: FC = () => {
             </div>
           </form>
         </div>
-        {/* <form method="dialog" className="modal-backdrop">
+        <form method="dialog" className="modal-backdrop">
           <button>Close</button>
-        </form> */}
+        </form>
       </dialog>
     </>
   );
