@@ -53,7 +53,7 @@ export default function ShopDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <div className="px-6 pt-[26px] flex flex-col gap-10">
+      <div className="px-6 pt-[26px] flex flex-col gap-10 mb-[172px]">
         <div className="w-[538px] flex justify-between py-[9px] items-center">
           <div className="w-12 h-12 flex justify-center items-center cursor-pointer">
             <LeftArrow />

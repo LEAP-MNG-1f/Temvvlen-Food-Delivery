@@ -15,6 +15,10 @@ type FoodValues = {
 
 export const AddFood: FC = () => {
   const BACKEND_ENDPOINT = process.env.BACKEND_URL;
+  const [inputOpen, setInputOpen] = useState(true);
+  const handleInputToggle = () => {
+    setInputOpen(!inputOpen);
+  };
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const formik = useFormik<FoodValues>({
@@ -141,12 +145,14 @@ export const AddFood: FC = () => {
                   <input
                     type="checkbox"
                     className="toggle toggle-success toggle-xs"
+                    onClick={handleInputToggle}
                   />
                   <p className="text-[#121316] font-poppins text-sm font-medium">
                     Хямдралтай эсэх
                   </p>
                 </div>
                 <input
+                  disabled={inputOpen}
                   type="text"
                   className="px-3 h-14 rounded-lg bg-[#F4F4F4] outline-none text-[#121316] font-inter text-base font-medium leading-5"
                   placeholder="Хямдралын үнэ оруулна уу"
@@ -160,7 +166,7 @@ export const AddFood: FC = () => {
                   <p className="text-[#525252] font-poppins text-base font-bold ">
                     Add image for the food
                   </p>
-                  <input type="file" id="upload" className="file" />
+                  <input type="file" id="upload" className="hidden" />
                   <label
                     htmlFor="upload"
                     className="px-3 py-2 rounded-lg bg-[#393939] text-white font-inter text-base font-bold cursor-pointer"

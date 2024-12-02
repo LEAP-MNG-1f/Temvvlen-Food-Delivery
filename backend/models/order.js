@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const roleEnum = {
-  values: ["active", "progress", "waiting", "delivered"],
+  values: ["Active", "Progress", "Waiting", "Delivered"],
 };
 
 const paymentEnum = {
-  values: ["cash", "card"],
+  values: ["Cash", "Card"],
 };
 
 const orderSchema = new mongoose.Schema({
@@ -18,7 +18,7 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     // required: true,
   },
-  foods: [
+  foodId: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Food",

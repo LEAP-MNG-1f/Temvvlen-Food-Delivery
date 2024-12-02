@@ -2,19 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Header } from "../constant";
-import { Order } from "../ui/Order";
-
-type OrderType = {
-  orderNumber: number;
-  totalPrice: string;
-  process: string;
-  createdDate: string;
-  district: string;
-  khoroo: string;
-  apartment: string;
-  phoneNumber: string;
-  information: string;
-};
+import { Order, OrderType } from "../ui/Order";
 
 export const AdminDashboard = () => {
   const BACKEND_ENDPOINT = process.env.BACKEND_URL;
@@ -77,8 +65,8 @@ export const AdminDashboard = () => {
           </div>
           <div></div>
         </div>
-        {dataOrder?.map((value, id) => {
-          return <Order value={value} key={id} />;
+        {dataOrder?.map((value) => {
+          return <Order value={value} key={value._id} />;
         })}
       </div>
     </div>
