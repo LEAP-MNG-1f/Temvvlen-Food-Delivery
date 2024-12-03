@@ -1,19 +1,15 @@
 "use client";
 
 import { FC } from "react";
+// import _ from "lodash";
 
 type UserType = {
   name: string;
 };
 
-type FoodType = {
-  _id: string;
-  image: string;
-  name: string;
-};
 export type OrderType = {
   _id?: string;
-  foodId: FoodType;
+  foodId: [];
   userId: UserType;
   orderNumber: number;
   totalPrice: string;
@@ -31,12 +27,12 @@ type OrderPropsType = {
 };
 
 export const Order: FC<OrderPropsType> = ({ value }) => {
-  console.log(value.foodId);
   return (
     <div className="flex items-center border-t border-[#ECEDF0] bg-white rounded-b-xl">
       <div className="max-w-[230px] w-full py-3 px-6 flex items-center gap-2">
         <img
-          src="https://s3-alpha-sig.figma.com/img/1f91/a1b6/d973c90c192043aefe86e4258acae7e6?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NTok2YnRoKy5C-EmxJjP0UJkF9IKTTWuYbe102ty3DZ0NWYL6S2r1YoLudOdUhkRYde6p7c3N~mXWJTRopUoBAmeNodVByWiQSEl7JmCdH~lt6Lyji9Qx9kAkspPqTFFeBzWSK6tX~EhQTCgRI3fycQ72-wrSJTCmiHbBsMh41N8SI-ix9XSvau9mJdVFpmJZMEWEiubvFF4h-AXlM62PV6wDYZsFDpxo~~FfXAgD~T8~taFLP5HggAfgqx0b3IqOIt7Ta8DPdg2iSQqTiKrWO5HMPf6WIyzvlSBNxnHSnZlf-oTZayJM5u7FmcJnRZ-VFyNji~og-4nT9f-qXQoRA__"
+          src="..."
+          // src={_.first(value.foodId)?.image}
           className="w-10 h-10 rounded-[4px] object-cover object-center"
         />
         <div className="flex flex-col justify-center">
@@ -44,7 +40,7 @@ export const Order: FC<OrderPropsType> = ({ value }) => {
             #{value.orderNumber}
           </p>
           <p className="text-[#3F4145] font-inter text-sm font-normal tracking-[-0.28px]">
-            Breakfast
+            {/* {_.first(value.foodId)?.name} */}
           </p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 import { Minus, WhitePlus } from "../svg";
 
 type Food = {
@@ -9,6 +9,7 @@ type Food = {
   price: string;
   ingeredient: string;
   image: string;
+  quantity: number;
 };
 
 type CardPropsType = {
@@ -17,9 +18,34 @@ type CardPropsType = {
 
 export const Card: FC<CardPropsType> = ({ item }) => {
   const modalRef = useRef<HTMLDialogElement>(null);
+  const [dataFood, setDataFood] = useState<Food[]>([]);
 
   const openModal = () => {
     modalRef.current?.showModal();
+  };
+
+  const handleAddToCart = () => {
+    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const updatedCart = [...existingCart, item];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const incrementQuantity = (itemId: number) => {
+    const updatedCart = dataFood.map((item) =>
+      item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setDataFood(updatedCart);
+  };
+
+  const decrementQuantity = (itemId: number) => {
+    const updatedCart = dataFood.map((item) =>
+      item._id === itemId && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setDataFood(updatedCart);
   };
 
   return (
@@ -65,7 +91,7 @@ export const Card: FC<CardPropsType> = ({ item }) => {
                 {item.name}
               </p>
               <p className="text-[#18BA51] font-poppins text-lg font-semibold leading-[27px]">
-                {item.price}
+                {item.price}₮
               </p>
             </div>
             <div className="flex flex-col gap-2 ">
@@ -82,18 +108,27 @@ export const Card: FC<CardPropsType> = ({ item }) => {
               Тоо
             </p>
             <div className="flex items-center gap-5">
-              <button className="w-[45px] h-10 bg-[#18BA51] rounded-[10px] flex items-center justify-center">
+              <button
+                onClick={() => decrementQuantity(item._id)}
+                className="w-[45px] h-10 bg-[#18BA51] rounded-[10px] flex items-center justify-center"
+              >
                 <Minus />
               </button>
               <p className="w-full max-w-[254px] px-[30px] py-2 text-[#171717] font-poppins text-base font-medium flex items-center justify-center">
-                1
+                {item.quantity}
               </p>
-              <button className="w-[45px] h-10 bg-[#18BA51] rounded-[10px] flex items-center justify-center">
+              <button
+                onClick={() => incrementQuantity(item._id)}
+                className="w-[45px] h-10 bg-[#18BA51] rounded-[10px] flex items-center justify-center"
+              >
                 <WhitePlus />
               </button>
             </div>
             <form method="dialog">
-              <button className="bg-[#18BA51] rounded-[4px] px-4 py-2 h-12 w-full text-[#FFFFFF] font-sans text-base font-normal leading-[19px]">
+              <button
+                onClick={handleAddToCart}
+                className="bg-[#18BA51] rounded-[4px] px-4 py-2 h-12 w-full text-[#FFFFFF] font-sans text-base font-normal leading-[19px]"
+              >
                 Сагслах
               </button>
             </form>

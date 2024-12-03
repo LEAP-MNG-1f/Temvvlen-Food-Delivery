@@ -10,15 +10,15 @@ import { Fragment, useEffect, useState } from "react";
 type Anchor = "right";
 
 type CartItem = {
-  id: number;
+  _id: number;
   name: string;
   price: number;
   ingredient: string;
   image: string;
+  quantity: number;
 };
 
 export default function ShopDrawer() {
-  const BACKEND_ENDPOINT = process.env.BACKEND_URL;
   const [dataCart, setDataCart] = useState<CartItem[]>([]);
   const [state, setState] = useState({
     right: false,
@@ -28,36 +28,57 @@ export default function ShopDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  const fetchDataCart = async () => {
-    try {
-      const response = await fetch(`${BACKEND_ENDPOINT}/foods`);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const category = await response.json();
-      setDataCart(category.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
-    fetchDataCart();
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cartWithQuantity = savedCart.map((item: CartItem) => ({
+      ...item,
+      quantity: item.quantity || 1,
+    }));
+    setDataCart(cartWithQuantity);
   }, []);
 
+  const removeFromCart = (itemToRemove: CartItem) => {
+    const updatedCart = dataCart.filter(
+      (item) => item._id !== itemToRemove._id
+    );
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setDataCart(updatedCart);
+  };
+
+  const incrementQuantity = (itemId: number) => {
+    const updatedCart = dataCart.map((item) =>
+      item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setDataCart(updatedCart);
+  };
+
+  const decrementQuantity = (itemId: number) => {
+    const updatedCart = dataCart.map((item) =>
+      item._id === itemId && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setDataCart(updatedCart);
+  };
+
+  const totalPrice = dataCart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
   const list = (anchor: Anchor) => (
-    <Box
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+    <Box role="presentation">
       <div className="px-6 pt-[26px] flex flex-col gap-10 mb-[172px]">
         <div className="w-[538px] flex justify-between py-[9px] items-center">
-          <div className="w-12 h-12 flex justify-center items-center cursor-pointer">
+          <button
+            onClick={toggleDrawer(anchor, false)}
+            className="w-12 h-12 flex justify-center items-center cursor-pointer"
+          >
             <LeftArrow />
-          </div>
+          </button>
           <p className="text-[#000] font-poppins text-xl font-black leading-[30px]">
             Таны сагс
           </p>
@@ -65,10 +86,15 @@ export default function ShopDrawer() {
         </div>
         <div className="flex flex-col">
           <div className="w-full h-[1px] bg-[#D6D8DB]"></div>
-          {dataCart?.map((item, id) => {
+          {dataCart?.map((item) => {
             return (
-              <div key={id}>
-                <DrawerCard item={item} />
+              <div key={item._id}>
+                <DrawerCard
+                  removeFromCart={removeFromCart}
+                  incrementQuantity={incrementQuantity}
+                  decrementQuantity={decrementQuantity}
+                  item={item}
+                />
               </div>
             );
           })}
@@ -80,7 +106,7 @@ export default function ShopDrawer() {
             Нийт төлөх дүн
           </p>
           <p className="text-[#121316] font-poppins text-lg font-bold leading-[27px]">
-            34,800₮
+            {totalPrice.toLocaleString()}₮
           </p>
         </div>
         <Link
