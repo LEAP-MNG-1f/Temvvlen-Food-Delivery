@@ -9,6 +9,7 @@ type Food = {
   price: string;
   ingeredient: string;
   image: string;
+  discount: number;
   quantity: number;
 };
 
@@ -71,9 +72,11 @@ export const Card: FC<CardPropsType> = ({ item }) => {
             <p className="text-[#18BA51] font-poppins text-lg font-semibold leading-[27px]">
               {item.price}₮
             </p>
-            {/* <p className="text-[#272727] font-poppins text-lg font-normal leading-[27px] line-through">
-              {item.discount}₮
-            </p> */}
+            {item.discount ? (
+              <p className="text-[#272727] font-poppins text-lg font-normal leading-[27px] line-through">
+                {item.discount}₮
+              </p>
+            ) : null}
           </div>
         </div>
       </button>

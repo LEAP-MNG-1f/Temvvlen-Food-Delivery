@@ -20,7 +20,7 @@ export const Header = (props: HeaderProps) => {
           <div className="flex items-center gap-2">
             <Link
               href="/"
-              className={`px-4 py-2 flex items-center text-sm font-bold leading-4 tracking-[-0.2px] font-sans
+              className={`px-4 py-2 flex items-center text-sm font-bold leading-4 tracking-[-0.2px] font-sans hover:text-[#18BA51]
                 ${props.home ? "text-[#18BA51]" : "text-[#000]"}
                 `}
             >
@@ -28,14 +28,14 @@ export const Header = (props: HeaderProps) => {
             </Link>
             <Link
               href="/menu"
-              className={`px-4 py-2 flex items-center text-sm font-bold leading-4 tracking-[-0.2px] font-sans
+              className={`px-4 py-2 flex items-center text-sm font-bold leading-4 tracking-[-0.2px] font-sans hover:text-[#18BA51]
                 ${props.menu ? "text-[#18BA51]" : "text-[#000]"}`}
             >
               ХООЛНЫ ЦЭС
             </Link>
             <Link
               href="/delivery-zone"
-              className={`px-4 py-2 flex items-center text-sm font-bold leading-4 tracking-[-0.2px] font-sans
+              className={`px-4 py-2 flex items-center text-sm font-bold leading-4 tracking-[-0.2px] font-sans hover:text-[#18BA51]
                 ${props.location ? "text-[#18BA51]" : "text-[#000]"}`}
             >
               ХҮРГЭЛТИЙН БҮС

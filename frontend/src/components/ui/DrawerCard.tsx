@@ -5,7 +5,7 @@ type CartItem = {
   _id: number;
   name: string;
   price: number;
-  ingredient: string;
+  ingeredient: string;
   image: string;
   quantity: number;
 };
@@ -46,7 +46,7 @@ export const DrawerCard: FC<DrawerCardProps> = ({
             </button>
           </div>
           <p className="text-[#767676] font-sans text-base font-normal leading-[19px]">
-            {item.ingredient}
+            {item.ingeredient}
           </p>
           <div className="flex items-center gap-2">
             <button

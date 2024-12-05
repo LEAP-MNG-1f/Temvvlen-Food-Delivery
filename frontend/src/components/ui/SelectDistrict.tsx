@@ -64,7 +64,7 @@ export const SelectDistrict: FC<ChooseDistrictProps> = ({
                   key={value.name}
                   onClick={onOptionClicked(value)}
                   value={value.name}
-                  className="w-full px-4 py-2 h-12 flex gap-1 items-center text-[#373737] font-sans text-base font-normal leading-[19px]"
+                  className="w-full px-4 py-2 h-12 flex gap-1 items-center text-[#373737] font-sans text-base font-normal leading-[19px] hover:bg-[#F7F7F8]"
                 >
                   <Location />
                   {value.name}

@@ -3,3 +3,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  transition: all;
+  transition-duration: 300ms;
+}

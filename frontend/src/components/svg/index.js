@@ -26,3 +26,4 @@ export * from "./Close";
 export * from "./Pencil";
 export * from "./Trash";
 export * from "./UpArrow";
+export * from "./GreenCircle";

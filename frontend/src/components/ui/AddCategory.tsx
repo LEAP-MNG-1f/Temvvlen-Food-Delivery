@@ -8,7 +8,11 @@ type CategoryValues = {
   name: string;
 };
 
-export const AddCategory: FC = () => {
+type AddCategoryProps = {
+  onAddCategory: () => void;
+};
+
+export const AddCategory: FC<AddCategoryProps> = ({ onAddCategory }) => {
   const BACKEND_ENDPOINT = process.env.BACKEND_URL;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -33,6 +37,7 @@ export const AddCategory: FC = () => {
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
 
+        onAddCategory();
         closeModal();
       } catch (error) {
         console.error(error);

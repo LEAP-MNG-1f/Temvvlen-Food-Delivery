@@ -10,8 +10,8 @@ const paymentEnum = {
 
 const orderSchema = new mongoose.Schema({
   userId: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "User",
+    // type: mongoose.SchemaTypes.ObjectId,
+    // ref: "User",
     // required: true,
   },
   orderNumber: {
@@ -20,7 +20,7 @@ const orderSchema = new mongoose.Schema({
   },
   foodId: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.SchemaTypes.ObjectId,
       ref: "Food",
       // required: true,
     },
@@ -32,7 +32,7 @@ const orderSchema = new mongoose.Schema({
   process: {
     type: String,
     enum: roleEnum,
-    default: "active",
+    default: "Active",
   },
   createdDate: {
     type: Date,
@@ -58,7 +58,7 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  paymenType: {
+  paymentType: {
     type: String,
     enum: paymentEnum,
   },

@@ -8,12 +8,17 @@ import { ChooseCategory } from "./ChooseCategory";
 type FoodValues = {
   name: string;
   ingeredient: string;
-  price: string;
   categoryId: string;
+  price: string;
+  discount: string;
   image: File | null;
 };
 
-export const AddFood: FC = () => {
+type AddFoodProps = {
+  onAddFood: () => void;
+};
+
+export const AddFood: FC<AddFoodProps> = ({ onAddFood }) => {
   const BACKEND_ENDPOINT = process.env.BACKEND_URL;
   const [inputOpen, setInputOpen] = useState(true);
   const handleInputToggle = () => {
@@ -27,6 +32,7 @@ export const AddFood: FC = () => {
       ingeredient: "",
       categoryId: "",
       price: "",
+      discount: "",
       image: null,
     },
     onSubmit: async (values) => {
@@ -46,6 +52,7 @@ export const AddFood: FC = () => {
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
 
+        onAddFood();
         closeModal();
       } catch (error) {
         console.error(error);
@@ -152,10 +159,14 @@ export const AddFood: FC = () => {
                   </p>
                 </div>
                 <input
+                  id="discount"
+                  name="discount"
                   disabled={inputOpen}
                   type="text"
                   className="px-3 h-14 rounded-lg bg-[#F4F4F4] outline-none text-[#121316] font-inter text-base font-medium leading-5"
                   placeholder="Хямдралын үнэ оруулна уу"
+                  value={formik.values.discount}
+                  onChange={formik.handleChange}
                 />
               </div>
               <div className="flex flex-col gap-2 justify-center">

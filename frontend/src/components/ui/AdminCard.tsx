@@ -101,7 +101,7 @@ export const AdminCard: FC<CardPropsType> = ({ item }) => {
               </button>
             </form>
             <p className="text-[#161616] font-poppins text-2xl font-bold">
-              Create food
+              Edit food
             </p>
             <div className="w-8 h-8"></div>
           </div>
@@ -179,7 +179,7 @@ export const AdminCard: FC<CardPropsType> = ({ item }) => {
                   <p className="text-[#525252] font-poppins text-base font-bold ">
                     Add image for the food
                   </p>
-                  <input type="file" id="upload" className="file" />
+                  <input type="file" id="upload" className="hidden" />
                   <label
                     htmlFor="upload"
                     className="px-3 py-2 rounded-lg bg-[#393939] text-white font-inter text-base font-bold cursor-pointer"

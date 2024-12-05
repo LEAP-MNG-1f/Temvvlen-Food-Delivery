@@ -60,6 +60,11 @@ export const AdminPage = () => {
     }
   };
 
+  const handleAddButton = () => {
+    fetchDataCategory();
+    fetchDataFood();
+  };
+
   useEffect(() => {
     fetchDataCategory();
     fetchDataFood();
@@ -127,7 +132,7 @@ export const AdminPage = () => {
                 </button>
               );
             })}
-            <AddCategory />
+            <AddCategory onAddCategory={handleAddButton} />
           </div>
         </div>
         <div className="py-6 pl-8 pr-8 min-h-screen bg-[#F7F7F8] w-full flex flex-col gap-8">
@@ -136,7 +141,7 @@ export const AdminPage = () => {
               <p className="text-[#272727] font-poppins text-[22px] font-bold leading-[33px]">
                 Breakfast
               </p>
-              <AddFood />
+              <AddFood onAddFood={handleAddButton} />
             </div>
             <div className="grid grid-cols-3 gap-x-6 gap-y-[60px]">
               {dataFood?.map((item) => {

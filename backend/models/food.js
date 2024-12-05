@@ -22,6 +22,10 @@ const foodSchema = new mongoose.Schema({
     ref: "Category",
     required: true,
   },
+  discount: {
+    type: String,
+    required: false,
+  },
 });
 
 export const Food = mongoose.model("Food", foodSchema);

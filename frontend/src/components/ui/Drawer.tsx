@@ -9,11 +9,11 @@ import { Fragment, useEffect, useState } from "react";
 
 type Anchor = "right";
 
-type CartItem = {
+export type CartItem = {
   _id: number;
   name: string;
   price: number;
-  ingredient: string;
+  ingeredient: string;
   image: string;
   quantity: number;
 };

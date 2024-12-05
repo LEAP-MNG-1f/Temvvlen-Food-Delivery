@@ -1,15 +1,16 @@
 "use client";
 
 import { FC } from "react";
-// import _ from "lodash";
+import _ from "lodash";
+import { FoodType } from "../constant";
 
-type UserType = {
+export type UserType = {
   name: string;
 };
 
 export type OrderType = {
   _id?: string;
-  foodId: [];
+  foodId: FoodType[];
   userId: UserType;
   orderNumber: number;
   totalPrice: string;
@@ -20,19 +21,20 @@ export type OrderType = {
   apartment: string;
   phoneNumber: string;
   information: string;
+  paymentType: string;
 };
 
-type OrderPropsType = {
+export type OrderPropsType = {
   value: OrderType;
 };
 
 export const Order: FC<OrderPropsType> = ({ value }) => {
+  // console.log(value.foodId);
   return (
     <div className="flex items-center border-t border-[#ECEDF0] bg-white rounded-b-xl">
       <div className="max-w-[230px] w-full py-3 px-6 flex items-center gap-2">
         <img
-          src="..."
-          // src={_.first(value.foodId)?.image}
+          // src={value.foodId}
           className="w-10 h-10 rounded-[4px] object-cover object-center"
         />
         <div className="flex flex-col justify-center">
@@ -50,16 +52,21 @@ export const Order: FC<OrderPropsType> = ({ value }) => {
             {value.phoneNumber}
           </p>
           <p className="text-[#3F4145] font-inter text-sm font-normal tracking-[-0.28px]">
-            {value.userId?.name}
+            {/* {value.userId?.name} */}
           </p>
         </div>
       </div>
       <div className="max-w-[230px] w-full py-3 px-6">
         <div className="flex items-center">
           <div className="flex flex-col justify-center">
-            <p className="text-[#121316] font-inter text-sm font-bold leading-4 tracking-[-0.14px]">
-              {value.totalPrice}₮
-            </p>
+            <div className="flex items-center gap-2">
+              <p className="text-[#121316] font-inter text-sm font-bold leading-4 tracking-[-0.14px]">
+                {value.totalPrice}₮
+              </p>
+              <p className="text-[#121316] font-inter text-sm font-bold leading-4 tracking-[-0.14px]">
+                {value.paymentType}
+              </p>
+            </div>
             <p className="text-[#3F4145] font-inter text-sm font-normal tracking-[-0.28px]">
               {value.createdDate}
             </p>

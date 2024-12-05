@@ -1,5 +1,4 @@
 import { Category } from "../models/category.js";
-// import { ObjectId } from "mongodb";
 
 const createCategory = async (request, response) => {
   const result = await Category.create(request.body);

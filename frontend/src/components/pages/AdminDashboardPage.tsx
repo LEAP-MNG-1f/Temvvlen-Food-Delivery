@@ -27,6 +27,8 @@ export const AdminDashboard = () => {
     fetchDataOrder();
   }, []);
 
+  console.log(dataOrder);
+
   return (
     <div className="w-full min-h-screen flex flex-col items-center bg-[#F7F7F8]">
       <Header home="" menu="" location="" />
