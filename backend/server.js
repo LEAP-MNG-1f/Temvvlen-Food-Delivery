@@ -13,7 +13,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGODB_API);
 
 const app = express();
-const PORT = 8800;
+const PORT = 8000;
 
 app.use(cors());
 app.use(bodyParser.json());
