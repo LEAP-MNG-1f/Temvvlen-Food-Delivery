@@ -211,5 +211,3 @@ export const AddFood: FC<AddFoodProps> = ({ onAddFood }) => {
     </>
   );
 };
-
-/////
