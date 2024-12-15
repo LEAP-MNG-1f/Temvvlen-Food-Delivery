@@ -54,4 +54,3 @@ export const MenuPage = () => {
     </div>
   );
 };
-//
