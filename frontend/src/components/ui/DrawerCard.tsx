@@ -70,5 +70,3 @@ export const DrawerCard: FC<DrawerCardProps> = ({
     </div>
   );
 };
-
-////
